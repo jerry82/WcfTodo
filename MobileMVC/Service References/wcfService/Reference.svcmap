@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="121e19dc-15aa-42c1-ab1c-d8aa6e938c19" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:52913/JService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="TodoService.wsdl" MetadataType="Wsdl" ID="868df35d-151a-43c7-8949-00bc0e3603ee" SourceId="1" SourceUrl="http://localhost:52913/JService.svc?wsdl" />
+    <MetadataFile FileName="JService2.xsd" MetadataType="Schema" ID="f01d679c-8454-43a3-b918-b9cf2158d401" SourceId="1" SourceUrl="http://localhost:52913/JService.svc?xsd=xsd1" />
+    <MetadataFile FileName="JService1.xsd" MetadataType="Schema" ID="e8876102-dd86-4aa2-87a2-80e048dae689" SourceId="1" SourceUrl="http://localhost:52913/JService.svc?xsd=xsd0" />
+    <MetadataFile FileName="JService.xsd" MetadataType="Schema" ID="b71e9507-1d7c-4cf8-ab57-17fa430d4f39" SourceId="1" SourceUrl="http://localhost:52913/JService.svc?xsd=xsd2" />
+    <MetadataFile FileName="JService.disco" MetadataType="Disco" ID="332dc867-e04d-4e83-85b8-fd74713e841b" SourceId="1" SourceUrl="http://localhost:52913/JService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
