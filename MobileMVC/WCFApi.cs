@@ -56,5 +56,10 @@ namespace MobileMVC
         {
             return _wsClient.GetAllCategories(username).ToList<Category>();
         }
+
+        public List<Task> GetAllTasks(long catId)
+        {
+            return _wsClient.GetAllTasks(catId).ToList();
+        }
     }
 }

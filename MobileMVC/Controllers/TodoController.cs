@@ -19,16 +19,18 @@ namespace MobileMVC.Controllers
         public ActionResult Index()
         {
             ViewBag.PageName = "CategoryMain";
-            var models = WcfApi.Instance.GetAllCategories(User.Identity.Name);
-            return View(models);
+            var model = WcfApi.Instance.GetAllCategories(User.Identity.Name);
+            return View(model);
         }
 
         //
         // GET: /Todo/Items/id
 
-        public ActionResult Items(long catId)
+        public ActionResult Tasks(long id)
         {
-            return View();
+            ViewBag.PageName = "TaskMain";
+            var model = WcfApi.Instance.GetAllTasks(id);
+            return View(model);
         }
     }
 }

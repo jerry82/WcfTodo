@@ -31,6 +31,12 @@
   <wsdl:message name="ITodo_GetAllCategories_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllCategoriesResponse" />
   </wsdl:message>
+  <wsdl:message name="ITodo_GetAllTasks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTasks" />
+  </wsdl:message>
+  <wsdl:message name="ITodo_GetAllTasks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTasksResponse" />
+  </wsdl:message>
   <wsdl:message name="ITodo_AddCategory_InputMessage">
     <wsdl:part name="parameters" element="tns:AddCategory" />
   </wsdl:message>
@@ -59,6 +65,10 @@
     <wsdl:operation name="GetAllCategories">
       <wsdl:input wsaw:Action="http://tempuri.org/ITodo/GetAllCategories" message="tns:ITodo_GetAllCategories_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITodo/GetAllCategoriesResponse" message="tns:ITodo_GetAllCategories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTasks">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITodo/GetAllTasks" message="tns:ITodo_GetAllTasks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITodo/GetAllTasksResponse" message="tns:ITodo_GetAllTasks_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddCategory">
       <wsdl:input wsaw:Action="http://tempuri.org/ITodo/AddCategory" message="tns:ITodo_AddCategory_InputMessage" />
@@ -100,6 +110,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllCategories">
       <soap:operation soapAction="http://tempuri.org/ITodo/GetAllCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTasks">
+      <soap:operation soapAction="http://tempuri.org/ITodo/GetAllTasks" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -60,10 +60,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetAllTasks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="catId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllTasksResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WcfService.Entity" minOccurs="0" name="GetAllTasksResult" nillable="true" type="q4:ArrayOfTask" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="AddCategory">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WcfService.Entity" minOccurs="0" name="category" nillable="true" type="q4:Category" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WcfService.Entity" minOccurs="0" name="category" nillable="true" type="q5:Category" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -77,7 +91,7 @@
   <xs:element name="RemoveCategory">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WcfService.Entity" minOccurs="0" name="category" nillable="true" type="q5:Category" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WcfService.Entity" minOccurs="0" name="category" nillable="true" type="q6:Category" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

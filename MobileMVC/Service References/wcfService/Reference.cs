@@ -117,6 +117,9 @@ namespace MobileMVC.wcfService {
         private int OrderField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TaskNumField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TitleField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -172,6 +175,19 @@ namespace MobileMVC.wcfService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TaskNum {
+            get {
+                return this.TaskNumField;
+            }
+            set {
+                if ((this.TaskNumField.Equals(value) != true)) {
+                    this.TaskNumField = value;
+                    this.RaisePropertyChanged("TaskNum");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Title {
             get {
                 return this.TitleField;
@@ -207,6 +223,115 @@ namespace MobileMVC.wcfService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Task", Namespace="http://schemas.datacontract.org/2004/07/WcfService.Entity")]
+    [System.SerializableAttribute()]
+    public partial class Task : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long CatIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CompletedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PriorityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TitleField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long CatId {
+            get {
+                return this.CatIdField;
+            }
+            set {
+                if ((this.CatIdField.Equals(value) != true)) {
+                    this.CatIdField = value;
+                    this.RaisePropertyChanged("CatId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Completed {
+            get {
+                return this.CompletedField;
+            }
+            set {
+                if ((this.CompletedField.Equals(value) != true)) {
+                    this.CompletedField = value;
+                    this.RaisePropertyChanged("Completed");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Priority {
+            get {
+                return this.PriorityField;
+            }
+            set {
+                if ((this.PriorityField.Equals(value) != true)) {
+                    this.PriorityField = value;
+                    this.RaisePropertyChanged("Priority");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title {
+            get {
+                return this.TitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
+                    this.TitleField = value;
+                    this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wcfService.ITodo")]
     public interface ITodo {
@@ -222,6 +347,9 @@ namespace MobileMVC.wcfService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/GetAllCategories", ReplyAction="http://tempuri.org/ITodo/GetAllCategoriesResponse")]
         MobileMVC.wcfService.Category[] GetAllCategories(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/GetAllTasks", ReplyAction="http://tempuri.org/ITodo/GetAllTasksResponse")]
+        MobileMVC.wcfService.Task[] GetAllTasks(long catId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/AddCategory", ReplyAction="http://tempuri.org/ITodo/AddCategoryResponse")]
         bool AddCategory(MobileMVC.wcfService.Category category);
@@ -271,6 +399,10 @@ namespace MobileMVC.wcfService {
         
         public MobileMVC.wcfService.Category[] GetAllCategories(string username) {
             return base.Channel.GetAllCategories(username);
+        }
+        
+        public MobileMVC.wcfService.Task[] GetAllTasks(long catId) {
+            return base.Channel.GetAllTasks(catId);
         }
         
         public bool AddCategory(MobileMVC.wcfService.Category category) {
