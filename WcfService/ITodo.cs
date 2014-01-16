@@ -29,6 +29,9 @@ namespace WcfService
         List<Category> GetAllCategories(string username);
 
         [OperationContract]
+        List<Task> GetAllTasks(long catId);
+
+        [OperationContract]
         bool AddCategory(Category category);
 
         [OperationContract]

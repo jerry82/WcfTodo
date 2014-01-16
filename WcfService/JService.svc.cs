@@ -83,6 +83,11 @@ namespace WcfService
             return _repo.GetAllCategories(_repo.GetUserId(username));
         }
 
+        List<Task> ITodo.GetAllTasks(long catId)
+        {
+            return _repo.GetAllTasks(catId);
+        }
+
         bool ITodo.AddCategory(Entity.Category category)
         {
             throw new NotImplementedException();

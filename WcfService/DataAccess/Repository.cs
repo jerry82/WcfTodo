@@ -214,6 +214,9 @@ namespace WcfService.DataAccess
         public Task AddTask(long catId, Task task)
         {
             task.Id = RedisApi.TaskDB.GetNextSequence();
+            Category cat = RedisApi.CategoryDB.GetById(catId);
+            cat.TaskNum++;
+            UpdateCategory(cat);
 
             RedisApi.TaskDB.Store(task);
             RedisApi.Client.AddItemToSet(CategoryTaskIndex.Tasks(catId), task.Id.ToString());
@@ -240,6 +243,11 @@ namespace WcfService.DataAccess
         public void RemoveTask(long id)
         {
             var task = RedisApi.TaskDB.GetById(id);
+
+            Category cat = RedisApi.CategoryDB.GetById(task.CatId);
+            cat.TaskNum--;
+            UpdateCategory(cat);
+
             RedisApi.TaskDB.DeleteById(id);
             RedisApi.Client.RemoveItemFromSet(CategoryTaskIndex.Tasks(task.CatId), id.ToString());
         }

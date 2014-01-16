@@ -23,5 +23,8 @@ namespace WcfService.Entity
 
         [DataMember]
         public long UserId { get; set; }
+
+        [DataMember]
+        public int TaskNum { get; set; }
     }
 }
