@@ -1,6 +1,9 @@
-﻿<head>
+﻿<!--
+<head>
     <script src="~/Scripts/jquery-1.8.2.min.js"></script>
 </head>
+    -->
+
 
 @model MobileMVC.Models.TaskMainViewModel
 @{
@@ -52,8 +55,8 @@
         <ul data-role="listview" data-inset="false" style="min-width:210px;" data-theme="d">
             <li data-role="divider" data-theme="e">Actions:</li>
             <li data-icon="check">@Html.ActionLink("Switch", "replace", null, new { @id = "switchStatusTaskLink"})</li>
-            <li data-icon="info"><a href="#">Edit</a></li>
-            <li data-icon="check">@Html.ActionLink("Remove", "replace", null, new { @id = "removeTaskLink" })</li>
+            <li data-icon="info" id="editLink"><a href="#">Edit</a></li>
+            <li data-icon="delete">@Html.ActionLink("Remove", "replace", null, new { @id = "removeTaskLink" })</li>
             <li data-icon="false"><a href="#" id="ClosePopup">Cancel</a></li>
         </ul>
     </div>
@@ -81,15 +84,11 @@
             }
 
             $(".taskLink").click(function () {
+                $("#editLink").hide();
                 var taskId = $(this).attr("data-id");
                 ChangePopupLink("SwitchStatusTask", "#switchStatusTaskLink", taskId);
-            });
-
-            $(".taskLink").click(function () {
-                var taskId = $(this).attr("data-id");
                 ChangePopupLink("DeleteTask", "#removeTaskLink", taskId);
             });
-
 
             $("#ClosePopup").click(function () {
                 $("#popupMenu").popup("close");

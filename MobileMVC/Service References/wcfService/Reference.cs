@@ -345,6 +345,9 @@ namespace MobileMVC.wcfService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/ChangePassword", ReplyAction="http://tempuri.org/ITodo/ChangePasswordResponse")]
         bool ChangePassword(string username, string password);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/GetUserId", ReplyAction="http://tempuri.org/ITodo/GetUserIdResponse")]
+        long GetUserId(string username);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/GetAllCategories", ReplyAction="http://tempuri.org/ITodo/GetAllCategoriesResponse")]
         MobileMVC.wcfService.Category[] GetAllCategories(string username);
         
@@ -355,7 +358,7 @@ namespace MobileMVC.wcfService {
         bool AddCategory(MobileMVC.wcfService.Category category);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/RemoveCategory", ReplyAction="http://tempuri.org/ITodo/RemoveCategoryResponse")]
-        bool RemoveCategory(MobileMVC.wcfService.Category category);
+        bool RemoveCategory(long catId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/AddTask", ReplyAction="http://tempuri.org/ITodo/AddTaskResponse")]
         MobileMVC.wcfService.Task AddTask(long catId, MobileMVC.wcfService.Task task);
@@ -409,6 +412,10 @@ namespace MobileMVC.wcfService {
             return base.Channel.ChangePassword(username, password);
         }
         
+        public long GetUserId(string username) {
+            return base.Channel.GetUserId(username);
+        }
+        
         public MobileMVC.wcfService.Category[] GetAllCategories(string username) {
             return base.Channel.GetAllCategories(username);
         }
@@ -421,8 +428,8 @@ namespace MobileMVC.wcfService {
             return base.Channel.AddCategory(category);
         }
         
-        public bool RemoveCategory(MobileMVC.wcfService.Category category) {
-            return base.Channel.RemoveCategory(category);
+        public bool RemoveCategory(long catId) {
+            return base.Channel.RemoveCategory(catId);
         }
         
         public MobileMVC.wcfService.Task AddTask(long catId, MobileMVC.wcfService.Task task) {

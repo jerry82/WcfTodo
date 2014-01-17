@@ -27,13 +27,13 @@ namespace WcfService.DataAccess
 
         List<Category> GetAllCategories(long userId);
 
-        Category AddCategory(string title, long userId);
+        Category AddCategory(Category cat);
 
         Category GetCategory(long id);
 
         void UpdateCategory(Category cat);
 
-        bool RemoveCategory(long userId, long catId);
+        bool RemoveCategory(long catId);
 
         void ForceRemoveAllCategories(long userId);
 
@@ -139,20 +139,13 @@ namespace WcfService.DataAccess
             return RedisApi.CategoryDB.GetByIds(catIds).ToList();
         }
 
-        //TODO: to change IconId
-        public Category AddCategory(string title, long userId)
+        public Category AddCategory(Category cat)
         {
-            Category cat = new Category() 
-            {
-                Id = RedisApi.CategoryDB.GetNextSequence(), 
-                Title = title, 
-                UserId = userId, 
-                IconId = 1,
-                Order = 1
-            };
-
+            cat.Id = RedisApi.CategoryDB.GetNextSequence();
+            cat.Order = (int)cat.Id;
+            cat.TaskNum = 0;
             Category returnCat = RedisApi.CategoryDB.Store(cat);
-            RedisApi.Client.AddItemToSet(UserCategoryIndex.Categories(userId), returnCat.Id.ToString());
+            RedisApi.Client.AddItemToSet(UserCategoryIndex.Categories(cat.UserId), returnCat.Id.ToString());
 
             return returnCat;
         }
@@ -172,7 +165,7 @@ namespace WcfService.DataAccess
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="catId"></param>
-        public bool RemoveCategory(long userId, long catId)
+        public bool RemoveCategory(long catId)
         {
             //only allow to remove empty categories
             var taskIds = RedisApi.Client.GetAllItemsFromSet(CategoryTaskIndex.Tasks(catId));
@@ -182,8 +175,9 @@ namespace WcfService.DataAccess
             }
 
             //remove cat>task relationship
+            Category cat = GetCategory(catId);
             RedisApi.CategoryDB.DeleteById(catId);
-            RedisApi.Client.RemoveItemFromSet(UserCategoryIndex.Categories(userId), catId.ToString());
+            RedisApi.Client.RemoveItemFromSet(UserCategoryIndex.Categories(cat.UserId), catId.ToString());
             return true;
         }
 
@@ -207,7 +201,7 @@ namespace WcfService.DataAccess
                 });
 
                 //after the categories are empty, process to delete them
-                RemoveCategory(userId, long.Parse(catId));
+                RemoveCategory(long.Parse(catId));
             });
         }
 

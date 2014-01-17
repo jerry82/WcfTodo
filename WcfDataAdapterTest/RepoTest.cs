@@ -95,9 +95,15 @@ namespace WcfDataAdapterTest
         {
             string title = "Title 1";
             long userId = GetLoginId();
-            Category cat = _repo.AddCategory(title, userId);
+            Category cat = new Category()
+            {
+                Title = title,
+                UserId = userId,
+                IconId = 1,
+            };
+            cat = _repo.AddCategory(cat);
             Assert.AreEqual(title, cat.Title);
-            bool canRemove = _repo.RemoveCategory(userId, cat.Id);
+            bool canRemove = _repo.RemoveCategory(cat.Id);
             Assert.IsTrue(canRemove);
         }
 
@@ -134,7 +140,14 @@ namespace WcfDataAdapterTest
             for (int i = 0; i < SIZE; i++)
             {
                 string title = String.Format("Categories-{0}", i);
-                _repo.AddCategory(title, userId);
+                Category cat = new Category()
+                {
+                    Title = title,
+                    UserId = userId,
+                    IconId = 1,
+                    TaskNum = 0
+                };
+                _repo.AddCategory(cat);
             }
             List<Category> cats = _repo.GetAllCategories(userId);
             Assert.AreEqual(SIZE, cats.Count);
@@ -147,7 +160,15 @@ namespace WcfDataAdapterTest
         {
             long userId = GetLoginId();
             string title = "My category";
-            Category cat = _repo.AddCategory(title, userId);
+
+            Category cat = new Category()
+            {
+                Title = title,
+                UserId = userId,
+                IconId = 1
+            };
+                
+            cat = _repo.AddCategory(cat);
             Task task = new Task()
             {
                 Title = "Task 1",
@@ -183,7 +204,13 @@ namespace WcfDataAdapterTest
         {
             long userId = GetLoginId();
             string title = "My category";
-            Category cat = _repo.AddCategory(title, userId);
+            Category cat = new Category()
+            {
+                Title = title,
+                UserId = userId,
+                IconId = 1,
+            };
+            cat = _repo.AddCategory(cat);
             int Size = 3;
             for (int i = 0; i < Size; i++)
             {

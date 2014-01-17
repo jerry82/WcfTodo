@@ -26,6 +26,9 @@ namespace WcfService
         #endregion
 
         [OperationContract]
+        long GetUserId(string username);
+
+        [OperationContract]
         List<Category> GetAllCategories(string username);
 
         [OperationContract]
@@ -35,7 +38,7 @@ namespace WcfService
         bool AddCategory(Category category);
 
         [OperationContract]
-        bool RemoveCategory(Category category);
+        bool RemoveCategory(long catId);
 
         [OperationContract]
         Task AddTask(long catId, Task task);

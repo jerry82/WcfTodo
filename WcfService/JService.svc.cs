@@ -78,6 +78,11 @@ namespace WcfService
             return success;
         }
 
+        long ITodo.GetUserId(string username)
+        {
+            return _repo.GetUserId(username);
+        }
+
         List<Category> ITodo.GetAllCategories(string username)
         {
             return _repo.GetAllCategories(_repo.GetUserId(username));
@@ -90,12 +95,13 @@ namespace WcfService
 
         bool ITodo.AddCategory(Entity.Category category)
         {
-            throw new NotImplementedException();
+            Category cat = _repo.AddCategory(category);
+            return cat != null;
         }
 
-        bool ITodo.RemoveCategory(Entity.Category category)
+        bool ITodo.RemoveCategory(long catId)
         {
-            throw new NotImplementedException();
+            return _repo.RemoveCategory(catId);
         }
 
         Task ITodo.AddTask(long catId, Task task)

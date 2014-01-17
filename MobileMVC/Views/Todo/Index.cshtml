@@ -1,14 +1,65 @@
 ﻿@model IEnumerable<MobileMVC.wcfService.Category>
-
-@{
-    ViewBag.Title = "Category";
-}
-
-<ul data-role="listview" data-divider-theme="b" data-count-theme="c" data-inset="false">
-    @foreach (var cat in Model)
-    {
-        <li data-theme="c">@Html.ActionLink(cat.Title, "Tasks", new { cat.Id })
-            <span class="ui-li-count">@cat.TaskNum</span>
-        </li>
+    @{
+        ViewBag.Title = "Category";
     }
-</ul>
+    <ul data-role="listview" data-divider-theme="b" data-count-theme="c" data-inset="false">
+        @foreach (var cat in Model)
+        {
+            <li data-theme="c" data-icon="false">
+                <a href="#popupMenu" class="catLink" data-id=@cat.Id data-rel="popup" data-inline="true" data-transition="slideup" data-theme="a">@cat.Title</a>
+                <span class="ui-li-count" id="span_@cat.Id">@cat.TaskNum</span>
+            </li>
+        }
+    </ul>
+
+
+<!-- popup-menu -->
+<div data-role="popup" id="popupMenu" data-theme="d">
+    <ul data-role="listview" data-inset="false" style="min-width:210px;" data-theme="d">
+        <li data-role="divider" data-theme="e">Actions:</li>
+        <li data-icon="grid">@Html.ActionLink("Show Tasks", "replace", null, new { @id = "showTasksLink" })</a></li>
+        <li data-icon="check" id="removeLink">@Html.ActionLink("Remove", "replace", null, new { @id = "removeCatLink" })</li>
+        <li data-icon="gear" id="editLink"><a href="#">Edit</a></li>
+        <li data-icon="false"><a href="#" id="ClosePopup">Cancel</a></li>
+    </ul>
+</div>
+<!-- popup-menu -->
+
+<script>
+    $(document).ready(function () {
+        function ChangePopupLink(baseAction, actionLinkId, catId) {
+            var tmp = baseAction + "?id=" + catId;
+            var newHref = "";
+            var tmpUri = $(actionLinkId).attr("href");
+
+            if (tmpUri.indexOf("replace") > 0) {
+                newHref = $(actionLinkId).attr("href").replace("replace", tmp);
+            }
+            else {
+                var idx = tmpUri.indexOf(baseAction);
+                newHref = tmpUri.substring(0, idx) + tmp;
+            }
+
+            $(actionLinkId).attr("href", newHref);
+        }
+
+        $(".catLink").click(function () {
+            var catId = $(this).attr("data-id");
+            //hide removeLink
+            var numTasks = $("#span_" + catId).text();
+            $("#editLink").hide();
+            if (numTasks != "0")
+                $("#removeLink").hide();
+            else
+                $("#removeLink").show();
+            ChangePopupLink("DeleteCategory", "#removeCatLink", catId);
+            ChangePopupLink("Tasks", "#showTasksLink", catId);
+            
+        });
+
+        //close popup menu
+        $("#ClosePopup").click(function () {
+            $("#popupMenu").popup("close");
+        });
+    });
+</script>

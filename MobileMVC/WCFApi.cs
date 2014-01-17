@@ -52,9 +52,24 @@ namespace MobileMVC
         }
         #endregion
 
+        public long GetUserId(string username)
+        {
+            return _wsClient.GetUserId(username);
+        }
+
         public List<Category> GetAllCategories(string username)
         {
             return _wsClient.GetAllCategories(username).ToList<Category>();
+        }
+
+        public void AddCategory(Category cat)
+        {
+            _wsClient.AddCategory(cat);
+        }
+
+        public bool DeleteCategory(long catId)
+        {
+            return _wsClient.RemoveCategory(catId);
         }
 
         public List<Task> GetAllTasks(long catId)

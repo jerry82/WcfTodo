@@ -33,9 +33,29 @@ namespace MobileMVC.Controllers
         //
         // POST: /Todo/CategoryAdd/Task
         [HttpPost]
-        public ActionResult CategoryAdd(Category cat)
+        public ActionResult CategoryAdd(CategoryModel catModel)
         {
-            return View(cat);
+            if (ModelState.IsValid)
+            {
+                long userId = WcfApi.Instance.GetUserId(User.Identity.Name);
+                catModel.UserId = userId;
+                //TODO: to change
+                catModel.IconId = 1;
+
+                Category cat = catModel.GetCategoryObject();
+                WcfApi.Instance.AddCategory(cat);
+                return RedirectToAction("Index");
+            }
+
+            return View(catModel);
+        }
+
+        //
+        //GET: /Todo/DeleteCategory?catId=
+        public ActionResult DeleteCategory(long id)
+        {
+            WcfApi.Instance.DeleteCategory(id);
+            return this.RedirectToAction("Index");
         }
 
         #endregion
@@ -66,7 +86,7 @@ namespace MobileMVC.Controllers
             {
                 Task newTask = WcfApi.Instance.AddTask(task.CatId, task);
             }
-            return this.RedirectToAction("Tasks", new { task.CatId });
+            return this.RedirectToAction("Tasks", new { id = task.CatId });
         }
 
         //
