@@ -5,7 +5,6 @@
 }
 
 <ul data-role="listview" data-divider-theme="b" data-count-theme="c" data-inset="false">
-    <li data-role="list-divider" role="heading">Lists</li>
     @foreach (var cat in Model)
     {
         <li data-theme="c">@Html.ActionLink(cat.Title, "Tasks", new { cat.Id })

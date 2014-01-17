@@ -214,6 +214,7 @@ namespace WcfService.DataAccess
         public Task AddTask(long catId, Task task)
         {
             task.Id = RedisApi.TaskDB.GetNextSequence();
+            task.Priority = (int)task.Id;
             Category cat = RedisApi.CategoryDB.GetById(catId);
             cat.TaskNum++;
             UpdateCategory(cat);
@@ -245,11 +246,15 @@ namespace WcfService.DataAccess
             var task = RedisApi.TaskDB.GetById(id);
 
             Category cat = RedisApi.CategoryDB.GetById(task.CatId);
-            cat.TaskNum--;
-            UpdateCategory(cat);
-
-            RedisApi.TaskDB.DeleteById(id);
-            RedisApi.Client.RemoveItemFromSet(CategoryTaskIndex.Tasks(task.CatId), id.ToString());
+            if (cat != null)
+            {
+                cat.TaskNum--;
+                UpdateCategory(cat);
+                RedisApi.TaskDB.DeleteById(id);
+                RedisApi.Client.RemoveItemFromSet(CategoryTaskIndex.Tasks(task.CatId), id.ToString());
+            }
+            else
+                throw new Exception("RemoveTask> Cannot find category");
         }
 
         #endregion

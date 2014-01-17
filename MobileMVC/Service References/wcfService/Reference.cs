@@ -356,6 +356,18 @@ namespace MobileMVC.wcfService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/RemoveCategory", ReplyAction="http://tempuri.org/ITodo/RemoveCategoryResponse")]
         bool RemoveCategory(MobileMVC.wcfService.Category category);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/AddTask", ReplyAction="http://tempuri.org/ITodo/AddTaskResponse")]
+        MobileMVC.wcfService.Task AddTask(long catId, MobileMVC.wcfService.Task task);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/UpdateTask", ReplyAction="http://tempuri.org/ITodo/UpdateTaskResponse")]
+        void UpdateTask(MobileMVC.wcfService.Task task);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/GetTask", ReplyAction="http://tempuri.org/ITodo/GetTaskResponse")]
+        MobileMVC.wcfService.Task GetTask(long taskId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/RemoveTask", ReplyAction="http://tempuri.org/ITodo/RemoveTaskResponse")]
+        void RemoveTask(long taskId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -411,6 +423,22 @@ namespace MobileMVC.wcfService {
         
         public bool RemoveCategory(MobileMVC.wcfService.Category category) {
             return base.Channel.RemoveCategory(category);
+        }
+        
+        public MobileMVC.wcfService.Task AddTask(long catId, MobileMVC.wcfService.Task task) {
+            return base.Channel.AddTask(catId, task);
+        }
+        
+        public void UpdateTask(MobileMVC.wcfService.Task task) {
+            base.Channel.UpdateTask(task);
+        }
+        
+        public MobileMVC.wcfService.Task GetTask(long taskId) {
+            return base.Channel.GetTask(taskId);
+        }
+        
+        public void RemoveTask(long taskId) {
+            base.Channel.RemoveTask(taskId);
         }
     }
 }

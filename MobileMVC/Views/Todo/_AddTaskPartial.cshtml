@@ -1,0 +1,11 @@
+﻿@model MobileMVC.wcfService.Task
+
+@using (Html.BeginForm())
+{
+    <div class="editor-field">
+        @Html.HiddenFor(model => model.CatId)
+        @Html.EditorFor(model => model.Title)
+        <input type="submit" value="Add" />
+    </div>
+}
+

@@ -191,7 +191,8 @@ namespace WcfDataAdapterTest
                 {
                     Title = String.Format("Title:{0}", i.ToString()),
                     Priority = i % 3,
-                    Completed = false
+                    Completed = false, 
+                    CatId = cat.Id
                 };
                 _repo.AddTask(cat.Id, task);
             }

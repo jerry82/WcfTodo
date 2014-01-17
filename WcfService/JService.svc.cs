@@ -97,5 +97,25 @@ namespace WcfService
         {
             throw new NotImplementedException();
         }
+
+        Task ITodo.AddTask(long catId, Task task)
+        {
+            return _repo.AddTask(catId, task);
+        }
+
+        Task ITodo.GetTask(long taskId)
+        {
+            return _repo.GetTask(taskId);
+        }
+
+        void ITodo.UpdateTask(Task task) 
+        {
+            _repo.UpdateTask(task);   
+        }
+
+        void ITodo.RemoveTask(long taskId)
+        {
+            _repo.RemoveTask(taskId);
+        }
     }
 }

@@ -61,5 +61,25 @@ namespace MobileMVC
         {
             return _wsClient.GetAllTasks(catId).ToList();
         }
+
+        public Task AddTask(long catId, Task task)
+        {
+            return _wsClient.AddTask(catId, task);
+        }
+
+        public Task GetTask(long taskId)
+        {
+            return _wsClient.GetTask(taskId);
+        }
+
+        public void UpdateTask(Task task)
+        {
+            _wsClient.UpdateTask(task);
+        }
+
+        public void RemoveTask(long taskId)
+        {
+            _wsClient.RemoveTask(taskId);
+        }
     }
 }

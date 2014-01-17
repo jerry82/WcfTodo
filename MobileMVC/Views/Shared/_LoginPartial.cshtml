@@ -1,14 +1,24 @@
 ﻿
     @if (Request.IsAuthenticated)
     {
-        @Html.ActionLink(User.Identity.Name, "Index", "Account", routeValues: null, htmlAttributes: new { data_icon = "gear" })
+        if (ViewBag.PageName != "TaskMain")
+        {
+            @Html.ActionLink(User.Identity.Name, "Index", "Account", routeValues: null, htmlAttributes: new { data_icon = "gear" })
+        }
     }
     else
     {
         @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { data_icon = "gear" })
     }
-    
+
     @if (ViewBag.PageName == "CategoryMain")
-    {   
+    {
         @Html.ActionLink("Add", "CategoryAdd", "Todo")
     }
+    
+    @if (ViewBag.PageName == "TaskMain")
+    {
+        @Html.ActionLink("Back", "Index", "Todo", null, new { data_icon = "arrow-l"})
+        @Html.ActionLink("Add", "CategoryAdd", "Todo")
+    }
+

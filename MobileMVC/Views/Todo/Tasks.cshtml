@@ -1,34 +1,106 @@
-﻿@model IEnumerable<MobileMVC.wcfService.Task>
+﻿<head>
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+</head>
+
+@model MobileMVC.Models.TaskMainViewModel
 @{
     ViewBag.Title = "Tasks";
 }
 
-<ul data-role="listview" data-divider-theme="b" data-inset="false">
-    @foreach (var task in Model)
-    {
-        <li data-theme="c">
-            <a href="#popupMenu" data-rel="popup" data-inline="true" data-transition="slideup" data-icon="gear" data-theme="e">@task.Title</a>
-            <div data-role="popup" id="popupMenu" data-theme="d">
-                <ul data-role="listview" data-inset="false" style="min-width:210px;" data-theme="d">
-                    <li data-role="divider" data-theme="e">Actions:</li>
-                    <li data-icon="check"><a href="#">Complete</a></li>
-                    <li data-icon="info"><a href="#">Edit</a></li>
-                    <li data-icon="delete"><a href="#">Remove</a></li>
-                    <li data-icon="false"><a href="#ClosePopup">Cancel</a></li>
-                </ul>
-            </div>
-        </li>
+@*
+       @section Header {
+        @Html.ActionLink("Back", "Index", "Todo", null, new { data_icon = "arrow-l"})
+        <h1>@ViewBag.Title</h1>
     }
-</ul>
 
-<script type="text/javascript">
-    //close pupup when Cancel is clicked
-    $(document).on('click', '#ClosePopup', function () {
-        alet("aaa");
-        setTimeout(function () {
-            $("#popupMenu").popup("close");
-        }, 1);
-    });
-</script>
+*@
 
 
+    @{ Html.RenderPartial("_AddTaskPartial", Model.TaskObj); }
+    <br />
+
+    <ul data-role="listview" data-divider-theme="b" data-inset="false">
+        @foreach (var task in Model.TaskList)
+        {
+            if (!task.Completed)
+            {
+                <li data-theme="c" data-icon="false">
+                    <a href="#popupMenu" class="taskLink" data-id=@task.Id data-rel="popup" data-inline="true" data-transition="slideup" data-theme="c">@task.Title</a>
+                </li>
+            }
+        }
+
+        @if (Model.TaskList.FirstOrDefault(item => item.Completed) != null)
+        {
+            <li data-role="list-divider" data-divider-theme="d">Completed</li>
+        }
+        
+
+        @foreach (var task in Model.TaskList)
+        {
+            if (task.Completed)
+            {
+                <li data-theme="c" data-icon="false">
+                    <a href="#popupMenu" class="taskLink" data-id=@task.Id data-rel="popup" data-inline="true" data-transition="slideup" data-theme="a">@task.Title</a>
+                </li>
+            }
+        }
+    </ul>
+
+    <!-- popup-menu -->
+    <div data-role="popup" id="popupMenu" data-theme="d">
+        <ul data-role="listview" data-inset="false" style="min-width:210px;" data-theme="d">
+            <li data-role="divider" data-theme="e">Actions:</li>
+            <li data-icon="check">@Html.ActionLink("Switch", "replace", null, new { @id = "switchStatusTaskLink"})</li>
+            <li data-icon="info"><a href="#">Edit</a></li>
+            <li data-icon="check">@Html.ActionLink("Remove", "replace", null, new { @id = "removeTaskLink" })</li>
+            <li data-icon="false"><a href="#" id="ClosePopup">Cancel</a></li>
+        </ul>
+    </div>
+    <!-- popup-menu -->
+
+
+    <script>
+        $(document).ready(function () {
+            //common function to change popup link
+            function ChangePopupLink(baseAction, actionLinkId, taskId) {
+                var catId = $("#CatId").val();
+                var tmp = baseAction + "?catId=" + catId + "&taskId=" + taskId;
+                var newHref = "";
+                var tmpUri = $(actionLinkId).attr("href");
+
+                if (tmpUri.indexOf("replace") > 0) {
+                    newHref = $(actionLinkId).attr("href").replace("replace", tmp);
+                }
+                else {
+                    var idx = tmpUri.indexOf(baseAction);
+                    newHref = tmpUri.substring(0, idx) + tmp;
+                }
+
+                $(actionLinkId).attr("href", newHref);
+            }
+
+            $(".taskLink").click(function () {
+                var taskId = $(this).attr("data-id");
+                ChangePopupLink("SwitchStatusTask", "#switchStatusTaskLink", taskId);
+            });
+
+            $(".taskLink").click(function () {
+                var taskId = $(this).attr("data-id");
+                ChangePopupLink("DeleteTask", "#removeTaskLink", taskId);
+            });
+
+
+            $("#ClosePopup").click(function () {
+                $("#popupMenu").popup("close");
+            });
+
+            /*
+            $(document).on('click', '#ClosePopup', function () {
+                setTimeout(function () { 
+                    $("#popupMenu").popup("close");
+                }, 1);
+            });
+            **/
+        });
+    </script>

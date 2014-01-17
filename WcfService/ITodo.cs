@@ -36,5 +36,18 @@ namespace WcfService
 
         [OperationContract]
         bool RemoveCategory(Category category);
+
+        [OperationContract]
+        Task AddTask(long catId, Task task);
+
+        [OperationContract]
+        void UpdateTask(Task task);
+
+        [OperationContract]
+        Task GetTask(long taskId);
+
+        [OperationContract]
+        void RemoveTask(long taskId);
+        
     }
 }

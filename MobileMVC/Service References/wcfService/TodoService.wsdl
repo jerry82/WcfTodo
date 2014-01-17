@@ -49,6 +49,30 @@
   <wsdl:message name="ITodo_RemoveCategory_OutputMessage">
     <wsdl:part name="parameters" element="tns:RemoveCategoryResponse" />
   </wsdl:message>
+  <wsdl:message name="ITodo_AddTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTask" />
+  </wsdl:message>
+  <wsdl:message name="ITodo_AddTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITodo_UpdateTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTask" />
+  </wsdl:message>
+  <wsdl:message name="ITodo_UpdateTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITodo_GetTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTask" />
+  </wsdl:message>
+  <wsdl:message name="ITodo_GetTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITodo_RemoveTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveTask" />
+  </wsdl:message>
+  <wsdl:message name="ITodo_RemoveTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveTaskResponse" />
+  </wsdl:message>
   <wsdl:portType name="ITodo">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/ITodo/Login" message="tns:ITodo_Login_InputMessage" />
@@ -77,6 +101,22 @@
     <wsdl:operation name="RemoveCategory">
       <wsdl:input wsaw:Action="http://tempuri.org/ITodo/RemoveCategory" message="tns:ITodo_RemoveCategory_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITodo/RemoveCategoryResponse" message="tns:ITodo_RemoveCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITodo/AddTask" message="tns:ITodo_AddTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITodo/AddTaskResponse" message="tns:ITodo_AddTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITodo/UpdateTask" message="tns:ITodo_UpdateTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITodo/UpdateTaskResponse" message="tns:ITodo_UpdateTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITodo/GetTask" message="tns:ITodo_GetTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITodo/GetTaskResponse" message="tns:ITodo_GetTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITodo/RemoveTask" message="tns:ITodo_RemoveTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITodo/RemoveTaskResponse" message="tns:ITodo_RemoveTask_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ITodo" type="tns:ITodo">
@@ -137,6 +177,42 @@
     </wsdl:operation>
     <wsdl:operation name="RemoveCategory">
       <soap:operation soapAction="http://tempuri.org/ITodo/RemoveCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTask">
+      <soap:operation soapAction="http://tempuri.org/ITodo/AddTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTask">
+      <soap:operation soapAction="http://tempuri.org/ITodo/UpdateTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTask">
+      <soap:operation soapAction="http://tempuri.org/ITodo/GetTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveTask">
+      <soap:operation soapAction="http://tempuri.org/ITodo/RemoveTask" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
