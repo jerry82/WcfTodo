@@ -303,6 +303,7 @@
     <Content Include="Views\Todo\Index.cshtml" />
     <Content Include="Views\Todo\Tasks.cshtml" />
     <Content Include="Views\Todo\_AddTaskPartial.cshtml" />
+    <Content Include="Views\Todo\CategoryAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
