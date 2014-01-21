@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -14,6 +15,8 @@ namespace WcfDataAdapterTest
     public class RepoTest
     {
         Repository _repo = new Repository();
+
+        const string ICON_FILES_PATH = @"C:\code\csharp\WcfTodo\MobileMVC\Content\images\icons";
 
         #region Test Utils.cs
         [TestMethod]
@@ -229,17 +232,89 @@ namespace WcfDataAdapterTest
 
         #endregion
 
+        #region Test Icon CRUD
+        [TestMethod]
+        public void TestGetAllIcons()
+        {
+            Assert.IsTrue(_repo.GetAllIcons().Count > 0);
+        }
+
+        [TestMethod]
+        public void TestClearAllIcons()
+        {
+            _repo.ClearAllIcons();
+            Assert.IsTrue(_repo.GetAllIcons().Count == 0);
+            //test sequence
+            CIcon icon = new CIcon()
+            {
+                ImageUri = "dummy.png",
+                Name = "dummy"
+            };
+            CIcon newIcon = _repo.AddIcon(icon);
+            Assert.IsTrue(newIcon.Id == 1);
+        }
+
+        [TestMethod]
+        public void TestAddIcon()
+        {
+            CIcon icon = new CIcon()
+            {
+                ImageUri = "dummy.png",
+                Name = "dummy"
+            };
+            CIcon newIcon = _repo.AddIcon(icon);
+
+            Assert.AreEqual(icon.ImageUri, newIcon.ImageUri);
+            Assert.AreEqual(icon.Name, newIcon.Name);
+        }
+
+        [TestMethod]
+        public void TestGetIcon()
+        {
+            _repo.ClearAllIcons();
+            CIcon icon = new CIcon()
+            {
+                ImageUri = "dummy.png",
+                Name = "dummy"
+            };
+            _repo.AddIcon(icon);
+            CIcon newIcon = _repo.GetIcon(1);
+            Assert.AreEqual(icon.ImageUri, newIcon.ImageUri);
+            Assert.AreEqual(icon.Name, newIcon.Name);
+        }
+        #endregion
+
         [TestCleanup]
         public void CleanUp()
         {
             long userId = GetLoginId();
             //RemoveAllCategories(userId);
+            _repo.ClearAllIcons();
+            CreateIcons();
         }
 
         #region helpers
         private void RemoveAllCategories(long userId)
         {
             _repo.ForceRemoveAllCategories(userId);
+        }
+
+        private void CreateIcons()
+        {
+            DirectoryInfo dirInfo = new DirectoryInfo(ICON_FILES_PATH);
+            FileInfo[] files = dirInfo.GetFiles();
+            foreach (FileInfo fInfo in files)
+            {
+                string path = fInfo.Name;
+                string name = fInfo.Name.Replace(".png", "");
+
+                CIcon icon = new CIcon()
+                {
+                    ImageUri = path,
+                    Name = name
+                };
+                _repo.AddIcon(icon);
+            }
         }
 
         private long GetLoginId()

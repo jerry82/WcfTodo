@@ -46,6 +46,12 @@ namespace WcfService.DataAccess
         void UpdateTask(Task task);
 
         void RemoveTask(long id);
+
+        List<CIcon> GetAllIcons();
+
+        void ClearAllIcons();
+
+        CIcon AddIcon(CIcon icon);
     }
 
     /// <summary>
@@ -205,6 +211,9 @@ namespace WcfService.DataAccess
             });
         }
 
+        #endregion
+
+        #region Tasks
         public Task AddTask(long catId, Task task)
         {
             task.Id = RedisApi.TaskDB.GetNextSequence();
@@ -250,7 +259,32 @@ namespace WcfService.DataAccess
             else
                 throw new Exception("RemoveTask> Cannot find category");
         }
+        
+        #endregion
 
+        #region Icons
+
+        public List<CIcon> GetAllIcons()
+        {
+            return RedisApi.IconDB.GetAll().ToList<CIcon>();
+        }
+
+        public void ClearAllIcons()
+        {
+            RedisApi.IconDB.DeleteAll();
+            RedisApi.IconDB.SetSequence(0);
+        }
+
+        public CIcon AddIcon(CIcon icon)
+        {
+            icon.Id = RedisApi.IconDB.GetNextSequence();
+            return RedisApi.IconDB.Store(icon);
+        }
+
+        public CIcon GetIcon(long id)
+        {
+            return RedisApi.IconDB.GetById(id);
+        }
         #endregion
 
         #region helpers

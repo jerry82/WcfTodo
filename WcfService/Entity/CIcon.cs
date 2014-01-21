@@ -10,6 +10,6 @@ namespace WcfService.Entity
         public long Id { get; set; }
         public string Name { get; set; }
         public string ImageUri { get; set; }
-        public byte[] Binary { get; set; }
+        //public byte[] Binary { get; set; }
     }
 }

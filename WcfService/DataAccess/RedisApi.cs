@@ -48,6 +48,17 @@ namespace WcfService.DataAccess
             }
         }
 
+        private static IRedisTypedClient<CIcon> _iconDB = null;
+        public static IRedisTypedClient<CIcon> IconDB
+        {
+            get
+            {
+                if (_iconDB == null)
+                    _iconDB = Client.As<CIcon>();
+                return _iconDB;
+            }
+        }
+
         public static RedisClient Client = new RedisClient("localhost");
         public static IRedisClientsManager RedisManager = new BasicRedisClientManager(new string[] { "localhost" });
     }
