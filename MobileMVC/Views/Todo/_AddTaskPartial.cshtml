@@ -1,5 +1,7 @@
 ﻿@model MobileMVC.wcfService.Task
 
+<!--implement as a popup form-->
+<div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all">
 @using (Html.BeginForm())
 {
     <div class="editor-field">
@@ -8,4 +10,6 @@
         <input type="submit" value="Add" />
     </div>
 }
+</div>
+
 

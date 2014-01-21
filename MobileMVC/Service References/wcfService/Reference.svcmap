@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="121e19dc-15aa-42c1-ab1c-d8aa6e938c19" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4ac976bf-1a16-42a7-b0af-e28c4e1a1591" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -21,11 +21,11 @@
     <MetadataSource Address="http://localhost:52913/JService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="TodoService.wsdl" MetadataType="Wsdl" ID="868df35d-151a-43c7-8949-00bc0e3603ee" SourceId="1" SourceUrl="http://localhost:52913/JService.svc?wsdl" />
-    <MetadataFile FileName="JService2.xsd" MetadataType="Schema" ID="f01d679c-8454-43a3-b918-b9cf2158d401" SourceId="1" SourceUrl="http://localhost:52913/JService.svc?xsd=xsd1" />
-    <MetadataFile FileName="JService1.xsd" MetadataType="Schema" ID="e8876102-dd86-4aa2-87a2-80e048dae689" SourceId="1" SourceUrl="http://localhost:52913/JService.svc?xsd=xsd0" />
-    <MetadataFile FileName="JService.xsd" MetadataType="Schema" ID="b71e9507-1d7c-4cf8-ab57-17fa430d4f39" SourceId="1" SourceUrl="http://localhost:52913/JService.svc?xsd=xsd2" />
-    <MetadataFile FileName="JService.disco" MetadataType="Disco" ID="332dc867-e04d-4e83-85b8-fd74713e841b" SourceId="1" SourceUrl="http://localhost:52913/JService.svc?disco" />
+    <MetadataFile FileName="TodoService.wsdl" MetadataType="Wsdl" ID="da25200f-c6a3-4bfb-a9d7-cc1d10678695" SourceId="1" SourceUrl="http://localhost:52913/JService.svc?wsdl" />
+    <MetadataFile FileName="JService.xsd" MetadataType="Schema" ID="94cd1e41-6ca4-4fd3-885c-33bda08a7aaa" SourceId="1" SourceUrl="http://localhost:52913/JService.svc?xsd=xsd1" />
+    <MetadataFile FileName="JService1.xsd" MetadataType="Schema" ID="0206ed02-d7dd-4be8-a7f1-4fe1f3dbf684" SourceId="1" SourceUrl="http://localhost:52913/JService.svc?xsd=xsd0" />
+    <MetadataFile FileName="JService2.xsd" MetadataType="Schema" ID="f8f859ff-ae60-417c-980e-07cd78c034cf" SourceId="1" SourceUrl="http://localhost:52913/JService.svc?xsd=xsd2" />
+    <MetadataFile FileName="JService.disco" MetadataType="Disco" ID="bc7a7b78-7f8c-465b-9a4a-40337c77373f" SourceId="1" SourceUrl="http://localhost:52913/JService.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

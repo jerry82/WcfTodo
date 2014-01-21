@@ -177,6 +177,37 @@
     <Content Include="Content\images\icons-18-white.png" />
     <Content Include="Content\images\icons-36-black.png" />
     <Content Include="Content\images\icons-36-white.png" />
+    <Content Include="Content\images\icons\active_directory-32.png" />
+    <Content Include="Content\images\icons\add_database-32.png" />
+    <Content Include="Content\images\icons\add_user-32.png" />
+    <Content Include="Content\images\icons\administrative_tools-32.png" />
+    <Content Include="Content\images\icons\administrator-32.png" />
+    <Content Include="Content\images\icons\alarm_clock-32.png" />
+    <Content Include="Content\images\icons\baby_bottle-32.png" />
+    <Content Include="Content\images\icons\bandage-32.png" />
+    <Content Include="Content\images\icons\banknotes-32.png" />
+    <Content Include="Content\images\icons\bar_chart-32.png" />
+    <Content Include="Content\images\icons\bat-32.png" />
+    <Content Include="Content\images\icons\bear_footprint-32.png" />
+    <Content Include="Content\images\icons\bicycle-32.png" />
+    <Content Include="Content\images\icons\biomass-32.png" />
+    <Content Include="Content\images\icons\boots-32.png" />
+    <Content Include="Content\images\icons\brain-32.png" />
+    <Content Include="Content\images\icons\checked_user-32.png" />
+    <Content Include="Content\images\icons\cheese-32.png" />
+    <Content Include="Content\images\icons\christmas_candy-32.png" />
+    <Content Include="Content\images\icons\christmas_gift-32.png" />
+    <Content Include="Content\images\icons\clipperboard-32.png" />
+    <Content Include="Content\images\icons\collaboration-32.png" />
+    <Content Include="Content\images\icons\combo_chart-32.png" />
+    <Content Include="Content\images\icons\electro_devices-32.png" />
+    <Content Include="Content\images\icons\explosion-32.png" />
+    <Content Include="Content\images\icons\joystick_filled-32.png" />
+    <Content Include="Content\images\icons\money_bag-32.png" />
+    <Content Include="Content\images\icons\news-32.png" />
+    <Content Include="Content\images\icons\recycle_sign-32.png" />
+    <Content Include="Content\images\icons\rotate_camera-32.png" />
+    <Content Include="Content\images\icons\slr_camera2-32.png" />
     <Content Include="Content\jquery.mobile-1.2.0.css" />
     <Content Include="Content\jquery.mobile-1.2.0.min.css" />
     <Content Include="Content\jquery.mobile.structure-1.2.0.css" />
@@ -258,13 +289,13 @@
     <None Include="Service References\wcfService\JService.disco" />
     <None Include="Service References\wcfService\configuration91.svcinfo" />
     <None Include="Service References\wcfService\configuration.svcinfo" />
+    <Content Include="Service References\wcfService\MobileMVC.wcfService.Category.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\wcfService\MobileMVC.wcfService.LoginResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\wcfService\MobileMVC.wcfService.RegisterResult.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\wcfService\MobileMVC.wcfService.Category.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\wcfService\MobileMVC.wcfService.Task.datasource">
@@ -296,14 +327,14 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <None Include="Service References\wcfService\JService.xsd" />
-    <None Include="Service References\wcfService\JService1.xsd" />
-    <None Include="Service References\wcfService\JService2.xsd" />
-    <None Include="Service References\wcfService\TodoService.wsdl" />
     <Content Include="Views\Todo\Index.cshtml" />
     <Content Include="Views\Todo\Tasks.cshtml" />
     <Content Include="Views\Todo\_AddTaskPartial.cshtml" />
     <Content Include="Views\Todo\CategoryAdd.cshtml" />
+    <None Include="Service References\wcfService\JService.xsd" />
+    <None Include="Service References\wcfService\JService1.xsd" />
+    <None Include="Service References\wcfService\JService2.xsd" />
+    <None Include="Service References\wcfService\TodoService.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

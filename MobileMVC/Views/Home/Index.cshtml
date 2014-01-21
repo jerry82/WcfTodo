@@ -13,3 +13,21 @@
     <li>@Html.ActionLink("About", "About", "Home")</li>
     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 </ul>
+
+<script type="text/javascript">
+    function loginTest() {
+        $.ajax({
+            cache: false,
+            type: "GET",
+            async: false,
+            dataType: "xml",
+            url: "http://localhost:52913/TodoRestService.svc/login/test/test",
+            success: function (data) {
+                alert(data);
+            },
+            error: function (err) {
+                alert(err);
+            }
+        });
+    }
+</script>

@@ -11,13 +11,11 @@ using WcfService.Entity;
 
 namespace WcfService
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
-    public class TodoService : ITodo
+    public class JTodoService : ITodoService
     {
         private Repository _repo = new Repository();
 
-        LoginResult ITodo.Login(string username, string password)
+        LoginResult ITodoService.Login(string username, string password)
         {
             int resultInt;
             User user = _repo.Login(username, password, out resultInt);
@@ -41,7 +39,7 @@ namespace WcfService
             return result;
         }
 
-        RegisterResult ITodo.Register(string username, string password)
+        RegisterResult ITodoService.Register(string username, string password)
         {
             RegisterResult result = new RegisterResult();
             result.ResultString = ResultCodes.RegisterUserFail;
@@ -65,7 +63,7 @@ namespace WcfService
             return result;
         }
 
-        bool ITodo.ChangePassword(string username, string newPassword)
+        bool ITodoService.ChangePassword(string username, string newPassword)
         {
             bool success = false;
 
@@ -78,48 +76,48 @@ namespace WcfService
             return success;
         }
 
-        long ITodo.GetUserId(string username)
+        long ITodoService.GetUserId(string username)
         {
             return _repo.GetUserId(username);
         }
 
-        List<Category> ITodo.GetAllCategories(string username)
+        List<Category> ITodoService.GetAllCategories(string username)
         {
             return _repo.GetAllCategories(_repo.GetUserId(username));
         }
 
-        List<Task> ITodo.GetAllTasks(long catId)
+        List<Task> ITodoService.GetAllTasks(long catId)
         {
             return _repo.GetAllTasks(catId);
         }
 
-        bool ITodo.AddCategory(Entity.Category category)
+        bool ITodoService.AddCategory(Entity.Category category)
         {
             Category cat = _repo.AddCategory(category);
             return cat != null;
         }
 
-        bool ITodo.RemoveCategory(long catId)
+        bool ITodoService.RemoveCategory(long catId)
         {
             return _repo.RemoveCategory(catId);
         }
 
-        Task ITodo.AddTask(long catId, Task task)
+        Task ITodoService.AddTask(long catId, Task task)
         {
             return _repo.AddTask(catId, task);
         }
 
-        Task ITodo.GetTask(long taskId)
+        Task ITodoService.GetTask(long taskId)
         {
             return _repo.GetTask(taskId);
         }
 
-        void ITodo.UpdateTask(Task task) 
+        void ITodoService.UpdateTask(Task task) 
         {
             _repo.UpdateTask(task);   
         }
 
-        void ITodo.RemoveTask(long taskId)
+        void ITodoService.RemoveTask(long taskId)
         {
             _repo.RemoveTask(taskId);
         }

@@ -6,7 +6,10 @@
         @foreach (var cat in Model)
         {
             <li data-theme="c" data-icon="false">
-                <a href="#popupMenu" class="catLink" data-id=@cat.Id data-rel="popup" data-inline="true" data-transition="slideup" data-theme="a">@cat.Title</a>
+                <a href="#popupMenu" class="catLink" data-id=@cat.Id data-rel="popup" data-inline="true" data-transition="slideup" data-theme="a">
+                    <img src="/Content/Images/icons/bandage-32.png" class="ui-li-icon ui-corner-none">
+                    @cat.Title
+                </a>
                 <span class="ui-li-count" id="span_@cat.Id">@cat.TaskNum</span>
             </li>
         }
