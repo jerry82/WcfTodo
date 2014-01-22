@@ -309,6 +309,9 @@
     <None Include="Service References\wcfService\JTodoService.xsd" />
     <None Include="Service References\wcfService\JTodoService1.xsd" />
     <None Include="Service References\wcfService\JTodoService2.xsd" />
+    <Content Include="Service References\wcfService\MobileMVC.wcfService.CIcon.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\wcfService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -339,6 +342,7 @@
     <Content Include="Views\Todo\Tasks.cshtml" />
     <Content Include="Views\Todo\_AddTaskPartial.cshtml" />
     <Content Include="Views\Todo\CategoryAdd.cshtml" />
+    <Content Include="Views\Todo\_SelectIconPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

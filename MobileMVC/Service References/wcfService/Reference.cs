@@ -393,6 +393,83 @@ namespace MobileMVC.wcfService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CIcon", Namespace="http://schemas.datacontract.org/2004/07/WcfService.Entity")]
+    [System.SerializableAttribute()]
+    public partial class CIcon : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ImageUriField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ImageUri {
+            get {
+                return this.ImageUriField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImageUriField, value) != true)) {
+                    this.ImageUriField = value;
+                    this.RaisePropertyChanged("ImageUri");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wcfService.ITodoService")]
     public interface ITodoService {
@@ -433,6 +510,9 @@ namespace MobileMVC.wcfService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoService/RemoveTask", ReplyAction="http://tempuri.org/ITodoService/RemoveTaskResponse")]
         void RemoveTask(long taskId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoService/GetAllIcons", ReplyAction="http://tempuri.org/ITodoService/GetAllIconsResponse")]
+        MobileMVC.wcfService.CIcon[] GetAllIcons();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -508,6 +588,10 @@ namespace MobileMVC.wcfService {
         
         public void RemoveTask(long taskId) {
             base.Channel.RemoveTask(taskId);
+        }
+        
+        public MobileMVC.wcfService.CIcon[] GetAllIcons() {
+            return base.Channel.GetAllIcons();
         }
     }
 }

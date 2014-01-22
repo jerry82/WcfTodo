@@ -1,0 +1,22 @@
+﻿@model IEnumerable<MobileMVC.wcfService.CIcon>
+
+<br />
+<fieldset data-role="collapsible" data-theme="d" data-inset="false" data-content-theme="d">
+    <legend>Select Icon:</legend>
+    <div data-role="controlgroup">
+    @foreach (var icon in Model)
+    {
+        if (icon.Id == 1)
+        {
+            <input type="radio" name="radio-choice" id="radio-choice-@icon.Id" value="on" checked="checked">
+        }
+        else
+        {
+            <input type="radio" name="radio-choice" id="radio-choice-@icon.Id" value="off">
+        }
+        <label for="radio-choice-@icon.Id">@icon.Name
+        <img align="right" height="20px" width="20px" src="/Content/Images/icons/@icon.ImageUri"></label>
+    }
+    </div>
+</fieldset>
+

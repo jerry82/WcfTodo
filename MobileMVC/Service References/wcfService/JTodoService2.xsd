@@ -56,4 +56,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Task" nillable="true" type="tns:Task" />
+  <xs:complexType name="ArrayOfCIcon">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CIcon" nillable="true" type="tns:CIcon" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCIcon" nillable="true" type="tns:ArrayOfCIcon" />
+  <xs:complexType name="CIcon">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="ImageUri" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CIcon" nillable="true" type="tns:CIcon" />
 </xs:schema>

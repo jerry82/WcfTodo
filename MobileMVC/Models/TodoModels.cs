@@ -16,7 +16,7 @@ namespace MobileMVC.Models
     }
 
     /// <summary>
-    /// map with wcf object Category
+    /// map with wcf object: Category
     /// </summary>
     public class CategoryModel
     {
@@ -34,6 +34,8 @@ namespace MobileMVC.Models
         
         public int Order { get; set; }
 
+        public List<CIcon> AllIcons { get; set; }
+
         public Category GetCategoryObject() 
         {
             return new Category()
@@ -41,7 +43,6 @@ namespace MobileMVC.Models
                 Id = this.Id,
                 Title = this.Title,
                 TaskNum = this.TaskNum,
-                //IconId = this.IconId,
                 IconId = this.IconId,
                 UserId = this.UserId,
                 Order = this.Order

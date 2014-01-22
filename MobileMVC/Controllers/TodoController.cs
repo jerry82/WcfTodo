@@ -27,7 +27,9 @@ namespace MobileMVC.Controllers
         // GET: /Todo/CategoryAdd/
         public ActionResult CategoryAdd()
         {
-            return View();
+            CategoryModel dummy = new CategoryModel();
+            dummy.AllIcons = WcfApi.Instance.GetAllIcons();
+            return View(dummy);
         }
 
         //

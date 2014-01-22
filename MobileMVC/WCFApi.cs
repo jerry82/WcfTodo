@@ -60,13 +60,14 @@ namespace MobileMVC
         {
             return _wsClient.ChangePassword(username, newPassword);
         }
-        #endregion
 
         public long GetUserId(string username)
         {
             return _wsClient.GetUserId(username);
         }
+        #endregion
 
+        #region category
         public List<Category> GetAllCategories(string username)
         {
             return _wsClient.GetAllCategories(username).ToList<Category>();
@@ -82,6 +83,9 @@ namespace MobileMVC
             return _wsClient.RemoveCategory(catId);
         }
 
+        #endregion
+
+        #region tasks
         public List<Task> GetAllTasks(long catId)
         {
             return _wsClient.GetAllTasks(catId).ToList();
@@ -106,5 +110,13 @@ namespace MobileMVC
         {
             _wsClient.RemoveTask(taskId);
         }
+        #endregion
+
+        #region icons
+        public List<CIcon> GetAllIcons()
+        {
+            return _wsClient.GetAllIcons().ToList<CIcon>();
+        }
+        #endregion
     }
 }

@@ -49,6 +49,9 @@ namespace WcfService
 
         [OperationContract]
         void RemoveTask(long taskId);
+
+        [OperationContract]
+        List<CIcon> GetAllIcons();
         
     }
 }

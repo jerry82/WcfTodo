@@ -241,7 +241,5 @@ namespace WcfService.DataAccess
             return RedisApi.IconDB.GetById(id);
         }
         #endregion
-
-        
     }
 }

@@ -271,16 +271,16 @@ namespace WcfDataAdapterTest
         [TestMethod]
         public void TestGetIcon()
         {
-            _repo.ClearAllIcons();
+            int cnt = _repo.GetAllIcons().Count;
+
             CIcon icon = new CIcon()
             {
                 ImageUri = "dummy.png",
                 Name = "dummy"
             };
             _repo.AddIcon(icon);
-            CIcon newIcon = _repo.GetIcon(1);
-            Assert.AreEqual(icon.ImageUri, newIcon.ImageUri);
-            Assert.AreEqual(icon.Name, newIcon.Name);
+
+            Assert.AreEqual(cnt + 1, _repo.GetAllIcons().Count);
         }
         #endregion
 
@@ -288,7 +288,7 @@ namespace WcfDataAdapterTest
         public void CleanUp()
         {
             long userId = GetLoginId();
-            //RemoveAllCategories(userId);
+            RemoveAllCategories(userId);
             _repo.ClearAllIcons();
             CreateIcons();
         }

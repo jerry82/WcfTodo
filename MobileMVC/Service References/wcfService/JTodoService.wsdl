@@ -82,6 +82,12 @@
   <wsdl:message name="ITodoService_RemoveTask_OutputMessage">
     <wsdl:part name="parameters" element="tns:RemoveTaskResponse" />
   </wsdl:message>
+  <wsdl:message name="ITodoService_GetAllIcons_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllIcons" />
+  </wsdl:message>
+  <wsdl:message name="ITodoService_GetAllIcons_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllIconsResponse" />
+  </wsdl:message>
   <wsdl:portType name="ITodoService">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/ITodoService/Login" message="tns:ITodoService_Login_InputMessage" />
@@ -131,6 +137,10 @@
     <wsdl:operation name="RemoveTask">
       <wsdl:input wsaw:Action="http://tempuri.org/ITodoService/RemoveTask" message="tns:ITodoService_RemoveTask_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITodoService/RemoveTaskResponse" message="tns:ITodoService_RemoveTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllIcons">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITodoService/GetAllIcons" message="tns:ITodoService_GetAllIcons_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITodoService/GetAllIconsResponse" message="tns:ITodoService_GetAllIcons_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ITodoService" type="tns:ITodoService">
@@ -239,6 +249,15 @@
     </wsdl:operation>
     <wsdl:operation name="RemoveTask">
       <soap:operation soapAction="http://tempuri.org/ITodoService/RemoveTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllIcons">
+      <soap:operation soapAction="http://tempuri.org/ITodoService/GetAllIcons" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -326,5 +326,27 @@ namespace WcfService
             }
             
         }
+
+        List<CIcon> ITodoService.GetAllIcons()
+        {
+            List<CIcon> list = new List<CIcon>();
+
+            try
+            {
+                list = _repo.GetAllIcons();
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex);
+                ServiceDataFault fault = new ServiceDataFault()
+                {
+                    Issue = "GetAllIcons Fail",
+                    Details = ex.ToString()
+                };
+                throw new FaultException<ServiceDataFault>(fault, new FaultReason(fault.Issue));
+            }
+
+            return list;
+        }
     }
 }
