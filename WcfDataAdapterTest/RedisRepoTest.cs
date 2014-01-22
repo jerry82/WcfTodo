@@ -12,7 +12,7 @@ using WcfService.DataAccess;
 namespace WcfDataAdapterTest
 {
     [TestClass]
-    public class RepoTest
+    public class RedisRepoTest
     {
         RedisRepository _repo = new RedisRepository();
 

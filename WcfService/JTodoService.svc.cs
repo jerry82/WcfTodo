@@ -27,7 +27,7 @@ namespace WcfService
         {
             try
             {
-                _repo = Utils.GetRepository("nosql");
+                _repo = Utils.GetRepository("");
             }
             catch (Exception ex)
             {
