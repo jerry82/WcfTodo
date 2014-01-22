@@ -11,61 +11,7 @@ using WcfService.Entity;
 
 namespace WcfService.DataAccess
 {
-    public interface IRepository
-    {
-        User Login(string username, string password, out int resultInt);
-
-        User AddUser(string username, string password);
-        
-        bool UserExists(string username);
-
-        void ChangePassword(string username, string newPassword);
-        
-        void RemoveUser(User user);
-        
-        void RemoveAllUsers();
-
-        List<Category> GetAllCategories(long userId);
-
-        Category AddCategory(Category cat);
-
-        Category GetCategory(long id);
-
-        void UpdateCategory(Category cat);
-
-        bool RemoveCategory(long catId);
-
-        void ForceRemoveAllCategories(long userId);
-
-        Task AddTask(long catId, Task task);
-
-        List<Task> GetAllTasks(long catId);
-
-        Task GetTask(long id);
-
-        void UpdateTask(Task task);
-
-        void RemoveTask(long id);
-
-        List<CIcon> GetAllIcons();
-
-        void ClearAllIcons();
-
-        CIcon AddIcon(CIcon icon);
-    }
-
-    /// <summary>
-    /// return login status 
-    /// </summary>
-    public enum LoginStatus
-    {
-        Success = 1,
-        WrongUser = 2, 
-        WrongPass = 3,
-        Fail = 4
-    }
-
-    public class Repository : IRepository
+    public class RedisRepository : IRepository
     {
         //define all redis keys userd for indexing
         static class UserCategoryIndex
@@ -78,17 +24,14 @@ namespace WcfService.DataAccess
             public static string Tasks(long catId) { return String.Format("urn:cat>task:{0}", catId); }
         }
 
-        /// <summary>
-        /// constructore: empty
-        /// </summary>
-        public Repository() { }
-
         #region user/login
         public User Login(string username, string password, out int resultInt)
         {
             LoginStatus result = LoginStatus.WrongUser;
-            User user = RedisApi.UserDB.GetAll().FirstOrDefault(item => item.Username.Equals(username));
+            User user = null;
+            resultInt = -1;
 
+            user = RedisApi.UserDB.GetAll().FirstOrDefault(item => item.Username.Equals(username));
             if (user != null)
             {
                 result = Utils.VerifyHash(password, ((User)user).PasswordHash) ? LoginStatus.Success : LoginStatus.WrongPass;
@@ -100,7 +43,7 @@ namespace WcfService.DataAccess
 
         public bool UserExists(string username)
         {
-            var user = RedisApi.UserDB.GetAll().FirstOrDefault(item => item.Username.Equals(username));
+            User user = RedisApi.UserDB.GetAll().FirstOrDefault(item => item.Username.Equals(username));
             return user != null;
         }
 
@@ -130,6 +73,18 @@ namespace WcfService.DataAccess
         public void RemoveAllUsers()
         {
             RedisApi.UserDB.DeleteAll();
+        }
+
+        public long GetUserId(string username)
+        {
+            long id = -1;
+            if (!String.IsNullOrEmpty(username))
+            {
+                var user = RedisApi.UserDB.GetAll().ToList().FirstOrDefault(item => item.Username.Equals(username));
+                if (user != null)
+                    id = ((User)user).Id;
+            }
+            return id;
         }
         #endregion
 
@@ -287,18 +242,6 @@ namespace WcfService.DataAccess
         }
         #endregion
 
-        #region helpers
-        public long GetUserId(string username)
-        {
-            long id = -1;
-            if (!String.IsNullOrEmpty(username))
-            {
-                var user = RedisApi.UserDB.GetAll().ToList().FirstOrDefault(item => item.Username.Equals(username));
-                if (user != null)
-                    id = ((User)user).Id;
-            }
-            return id;
-        }
-        #endregion
+        
     }
 }

@@ -8,6 +8,13 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="LoginResult" nillable="true" type="tns:LoginResult" />
+  <xs:complexType name="ServiceDataFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Details" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Issue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceDataFault" nillable="true" type="tns:ServiceDataFault" />
   <xs:complexType name="RegisterResult">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:LoginResult">

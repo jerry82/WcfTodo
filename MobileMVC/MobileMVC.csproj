@@ -39,8 +39,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Elmah">
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah.Mvc">
+      <HintPath>..\packages\Elmah.MVC.2.1.1\lib\net40\Elmah.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -286,9 +290,9 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <None Include="Service References\wcfService\JService.disco" />
     <None Include="Service References\wcfService\configuration91.svcinfo" />
     <None Include="Service References\wcfService\configuration.svcinfo" />
+    <None Include="Service References\wcfService\JTodoService.disco" />
     <Content Include="Service References\wcfService\MobileMVC.wcfService.Category.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -301,6 +305,10 @@
     <Content Include="Service References\wcfService\MobileMVC.wcfService.Task.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Service References\wcfService\JTodoService.wsdl" />
+    <None Include="Service References\wcfService\JTodoService.xsd" />
+    <None Include="Service References\wcfService\JTodoService1.xsd" />
+    <None Include="Service References\wcfService\JTodoService2.xsd" />
     <None Include="Service References\wcfService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -331,10 +339,6 @@
     <Content Include="Views\Todo\Tasks.cshtml" />
     <Content Include="Views\Todo\_AddTaskPartial.cshtml" />
     <Content Include="Views\Todo\CategoryAdd.cshtml" />
-    <None Include="Service References\wcfService\JService.xsd" />
-    <None Include="Service References\wcfService\JService1.xsd" />
-    <None Include="Service References\wcfService\JService2.xsd" />
-    <None Include="Service References\wcfService\TodoService.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

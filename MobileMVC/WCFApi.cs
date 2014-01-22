@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ServiceModel;
 
 using MobileMVC.wcfService;
 
@@ -15,7 +16,7 @@ namespace MobileMVC
     {
         #region declaration
         private static WcfApi _instance = null;
-        private wcfService.TodoClient _wsClient = null;
+        private wcfService.TodoServiceClient _wsClient = null;
 
         public static WcfApi Instance
         {
@@ -31,14 +32,23 @@ namespace MobileMVC
 
         private WcfApi() 
         {
-            _wsClient = new wcfService.TodoClient();
+            _wsClient = new wcfService.TodoServiceClient();
         }
         #endregion
 
         #region user management
         public LoginResult Login(string username, string password)
         {
-            return _wsClient.Login(username, password);
+            LoginResult result = null;
+            try
+            {
+                result = _wsClient.Login(username, password); 
+            }
+            catch (FaultException<ServiceDataFault> fault)
+            {
+                Elmah.ErrorSignal.FromCurrentContext().Raise(new Exception(fault.Detail.Details));
+            }
+            return result;
         }
 
         public RegisterResult Register(string username, string password)

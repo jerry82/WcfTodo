@@ -13,6 +13,7 @@ namespace WcfService
     [ServiceContract]
     public interface ITodoService
     {
+        [FaultContract(typeof(ServiceDataFault))]
         [OperationContract]
         LoginResult Login(string username, string password);
 

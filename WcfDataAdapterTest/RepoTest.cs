@@ -14,7 +14,7 @@ namespace WcfDataAdapterTest
     [TestClass]
     public class RepoTest
     {
-        Repository _repo = new Repository();
+        RedisRepository _repo = new RedisRepository();
 
         const string ICON_FILES_PATH = @"C:\code\csharp\WcfTodo\MobileMVC\Content\images\icons";
 
@@ -64,7 +64,7 @@ namespace WcfDataAdapterTest
 
             User user = _repo.AddUser(username, pass);
             int resultInt;
-            _repo.Login(username, pass, out resultInt);
+           _repo.Login(username, pass, out resultInt);
             Assert.AreEqual(1, resultInt);
             _repo.Login(wusername, pass, out resultInt);
             Assert.AreEqual(2, resultInt);

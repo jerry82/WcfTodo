@@ -14,7 +14,7 @@ namespace WcfService
     // NOTE: In order to launch WCF Test Client for testing this service, please select TodoRestService.svc or TodoRestService.svc.cs at the Solution Explorer and start debugging.
     public class TodoRestService : ITodoRestService
     {
-        private Repository _repo = new Repository();
+        private RedisRepository _repo = new RedisRepository();
 
         public long GetUserId(string username)
         {

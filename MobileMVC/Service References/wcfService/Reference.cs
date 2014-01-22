@@ -100,6 +100,67 @@ namespace MobileMVC.wcfService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceDataFault", Namespace="http://schemas.datacontract.org/2004/07/WcfService.Entity")]
+    [System.SerializableAttribute()]
+    public partial class ServiceDataFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DetailsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IssueField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Details {
+            get {
+                return this.DetailsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DetailsField, value) != true)) {
+                    this.DetailsField = value;
+                    this.RaisePropertyChanged("Details");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Issue {
+            get {
+                return this.IssueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IssueField, value) != true)) {
+                    this.IssueField = value;
+                    this.RaisePropertyChanged("Issue");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Category", Namespace="http://schemas.datacontract.org/2004/07/WcfService.Entity")]
     [System.SerializableAttribute()]
     public partial class Category : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -333,70 +394,71 @@ namespace MobileMVC.wcfService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wcfService.ITodo")]
-    public interface ITodo {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wcfService.ITodoService")]
+    public interface ITodoService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/Login", ReplyAction="http://tempuri.org/ITodo/LoginResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoService/Login", ReplyAction="http://tempuri.org/ITodoService/LoginResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(MobileMVC.wcfService.ServiceDataFault), Action="http://tempuri.org/ITodoService/LoginServiceDataFaultFault", Name="ServiceDataFault", Namespace="http://schemas.datacontract.org/2004/07/WcfService.Entity")]
         MobileMVC.wcfService.LoginResult Login(string username, string password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/Register", ReplyAction="http://tempuri.org/ITodo/RegisterResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoService/Register", ReplyAction="http://tempuri.org/ITodoService/RegisterResponse")]
         MobileMVC.wcfService.RegisterResult Register(string username, string password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/ChangePassword", ReplyAction="http://tempuri.org/ITodo/ChangePasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoService/ChangePassword", ReplyAction="http://tempuri.org/ITodoService/ChangePasswordResponse")]
         bool ChangePassword(string username, string password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/GetUserId", ReplyAction="http://tempuri.org/ITodo/GetUserIdResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoService/GetUserId", ReplyAction="http://tempuri.org/ITodoService/GetUserIdResponse")]
         long GetUserId(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/GetAllCategories", ReplyAction="http://tempuri.org/ITodo/GetAllCategoriesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoService/GetAllCategories", ReplyAction="http://tempuri.org/ITodoService/GetAllCategoriesResponse")]
         MobileMVC.wcfService.Category[] GetAllCategories(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/GetAllTasks", ReplyAction="http://tempuri.org/ITodo/GetAllTasksResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoService/GetAllTasks", ReplyAction="http://tempuri.org/ITodoService/GetAllTasksResponse")]
         MobileMVC.wcfService.Task[] GetAllTasks(long catId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/AddCategory", ReplyAction="http://tempuri.org/ITodo/AddCategoryResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoService/AddCategory", ReplyAction="http://tempuri.org/ITodoService/AddCategoryResponse")]
         bool AddCategory(MobileMVC.wcfService.Category category);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/RemoveCategory", ReplyAction="http://tempuri.org/ITodo/RemoveCategoryResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoService/RemoveCategory", ReplyAction="http://tempuri.org/ITodoService/RemoveCategoryResponse")]
         bool RemoveCategory(long catId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/AddTask", ReplyAction="http://tempuri.org/ITodo/AddTaskResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoService/AddTask", ReplyAction="http://tempuri.org/ITodoService/AddTaskResponse")]
         MobileMVC.wcfService.Task AddTask(long catId, MobileMVC.wcfService.Task task);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/UpdateTask", ReplyAction="http://tempuri.org/ITodo/UpdateTaskResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoService/UpdateTask", ReplyAction="http://tempuri.org/ITodoService/UpdateTaskResponse")]
         void UpdateTask(MobileMVC.wcfService.Task task);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/GetTask", ReplyAction="http://tempuri.org/ITodo/GetTaskResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoService/GetTask", ReplyAction="http://tempuri.org/ITodoService/GetTaskResponse")]
         MobileMVC.wcfService.Task GetTask(long taskId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodo/RemoveTask", ReplyAction="http://tempuri.org/ITodo/RemoveTaskResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoService/RemoveTask", ReplyAction="http://tempuri.org/ITodoService/RemoveTaskResponse")]
         void RemoveTask(long taskId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ITodoChannel : MobileMVC.wcfService.ITodo, System.ServiceModel.IClientChannel {
+    public interface ITodoServiceChannel : MobileMVC.wcfService.ITodoService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class TodoClient : System.ServiceModel.ClientBase<MobileMVC.wcfService.ITodo>, MobileMVC.wcfService.ITodo {
+    public partial class TodoServiceClient : System.ServiceModel.ClientBase<MobileMVC.wcfService.ITodoService>, MobileMVC.wcfService.ITodoService {
         
-        public TodoClient() {
+        public TodoServiceClient() {
         }
         
-        public TodoClient(string endpointConfigurationName) : 
+        public TodoServiceClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public TodoClient(string endpointConfigurationName, string remoteAddress) : 
+        public TodoServiceClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public TodoClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public TodoServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public TodoClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public TodoServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         

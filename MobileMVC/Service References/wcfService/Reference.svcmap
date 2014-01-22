@@ -18,14 +18,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:52913/JService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:52913/JTodoService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="TodoService.wsdl" MetadataType="Wsdl" ID="da25200f-c6a3-4bfb-a9d7-cc1d10678695" SourceId="1" SourceUrl="http://localhost:52913/JService.svc?wsdl" />
-    <MetadataFile FileName="JService.xsd" MetadataType="Schema" ID="94cd1e41-6ca4-4fd3-885c-33bda08a7aaa" SourceId="1" SourceUrl="http://localhost:52913/JService.svc?xsd=xsd1" />
-    <MetadataFile FileName="JService1.xsd" MetadataType="Schema" ID="0206ed02-d7dd-4be8-a7f1-4fe1f3dbf684" SourceId="1" SourceUrl="http://localhost:52913/JService.svc?xsd=xsd0" />
-    <MetadataFile FileName="JService2.xsd" MetadataType="Schema" ID="f8f859ff-ae60-417c-980e-07cd78c034cf" SourceId="1" SourceUrl="http://localhost:52913/JService.svc?xsd=xsd2" />
-    <MetadataFile FileName="JService.disco" MetadataType="Disco" ID="bc7a7b78-7f8c-465b-9a4a-40337c77373f" SourceId="1" SourceUrl="http://localhost:52913/JService.svc?disco" />
+    <MetadataFile FileName="JTodoService.wsdl" MetadataType="Wsdl" ID="13568af9-b939-47f7-b463-51038bd34dc6" SourceId="1" SourceUrl="http://localhost:52913/JTodoService.svc?wsdl" />
+    <MetadataFile FileName="JTodoService.xsd" MetadataType="Schema" ID="1be88a62-b72d-406b-a36b-5b8acbee120e" SourceId="1" SourceUrl="http://localhost:52913/JTodoService.svc?xsd=xsd1" />
+    <MetadataFile FileName="JTodoService1.xsd" MetadataType="Schema" ID="a0ce7ab0-3142-41b7-8e26-62220f155b18" SourceId="1" SourceUrl="http://localhost:52913/JTodoService.svc?xsd=xsd0" />
+    <MetadataFile FileName="JTodoService2.xsd" MetadataType="Schema" ID="b01a51fa-4e1d-417c-94cb-b4ef128d0b0d" SourceId="1" SourceUrl="http://localhost:52913/JTodoService.svc?xsd=xsd2" />
+    <MetadataFile FileName="JTodoService.disco" MetadataType="Disco" ID="e88840f5-4300-4574-9aec-92519d026d5b" SourceId="1" SourceUrl="http://localhost:52913/JTodoService.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

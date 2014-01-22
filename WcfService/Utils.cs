@@ -4,6 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Text;
 using System.Security.Cryptography;
+using System.Configuration;
+
+using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity.Configuration;
+
+using WcfService.DataAccess;
 
 namespace WcfService
 {
@@ -25,6 +31,23 @@ namespace WcfService
             string inputHash = GetHash(input);
             bool result = (hashValue.Equals(inputHash));
             return result;
+        }
+
+        public static IRepository GetRepository(string containerName)
+        {
+            //specify the file path
+            string configName = String.Format(@"{0}/unity.config", System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath);
+            var fileMap = new ExeConfigurationFileMap { ExeConfigFilename = configName };
+            Configuration configuration = ConfigurationManager.OpenMappedExeConfiguration(fileMap, ConfigurationUserLevel.None);
+            var unitySection = (UnityConfigurationSection)configuration.GetSection("unity");
+
+            var container = new UnityContainer();
+            if (String.IsNullOrEmpty(containerName))
+                container.LoadConfiguration(unitySection);
+            else
+                container.LoadConfiguration(unitySection,containerName);
+
+            return container.Resolve<IRepository>();
         }
     }
 }
