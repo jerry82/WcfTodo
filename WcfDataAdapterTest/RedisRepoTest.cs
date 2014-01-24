@@ -284,6 +284,14 @@ namespace WcfDataAdapterTest
         }
         #endregion
 
+        [TestMethod]
+        public void CreateFreshDB()
+        {
+            _repo.RemoveAllUsers();
+            _repo.ClearAllIcons();
+            CreateIcons();
+        }
+
         [TestCleanup]
         public void CleanUp()
         {

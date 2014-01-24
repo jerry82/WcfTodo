@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MobileMVC.wcfService.Category>
+﻿@model IEnumerable<MobileMVC.Models.CategoryIconModel>
     @{
         ViewBag.Title = "Category";
     }
@@ -7,7 +7,7 @@
         {
             <li data-theme="c" data-icon="false">
                 <a href="#popupMenu" class="catLink" data-id=@cat.Id data-rel="popup" data-inline="true" data-transition="slideup" data-theme="a">
-                    <img src="/Content/Images/icons/bandage-32.png" class="ui-li-icon ui-corner-none">
+                    <img src="~/Content/Images/icons/@cat.CIcon.ImageUri" class="ui-li-icon ui-corner-none">
                     @cat.Title
                 </a>
                 <span class="ui-li-count" id="span_@cat.Id">@cat.TaskNum</span>
@@ -15,14 +15,13 @@
         }
     </ul>
 
-
 <!-- popup-menu -->
 <div data-role="popup" id="popupMenu" data-theme="d">
     <ul data-role="listview" data-inset="false" style="min-width:210px;" data-theme="d">
         <li data-role="divider" data-theme="e">Actions:</li>
-        <li data-icon="grid">@Html.ActionLink("Show Tasks", "replace", null, new { @id = "showTasksLink" })</a></li>
+        <li data-icon="grid">@Html.ActionLink("Show Tasks", "replace", null, new { @id = "showTasksLink" })</li>
         <li data-icon="check" id="removeLink">@Html.ActionLink("Remove", "replace", null, new { @id = "removeCatLink" })</li>
-        <li data-icon="gear" id="editLink"><a href="#">Edit</a></li>
+        <li data-icon="gear">@Html.ActionLink("Edit", "replace", null, new { @id = "editLink" })</li>
         <li data-icon="false"><a href="#" id="ClosePopup">Cancel</a></li>
     </ul>
 </div>
@@ -48,16 +47,15 @@
 
         $(".catLink").click(function () {
             var catId = $(this).attr("data-id");
-            //hide removeLink
+            /*
             var numTasks = $("#span_" + catId).text();
-            $("#editLink").hide();
             if (numTasks != "0")
                 $("#removeLink").hide();
             else
-                $("#removeLink").show();
+                $("#removeLink").show();*/
             ChangePopupLink("DeleteCategory", "#removeCatLink", catId);
             ChangePopupLink("Tasks", "#showTasksLink", catId);
-            
+            ChangePopupLink("CategoryAddEdit", "#editLink", catId);
         });
 
         //close popup menu

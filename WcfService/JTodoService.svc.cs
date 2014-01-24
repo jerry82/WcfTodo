@@ -187,25 +187,26 @@ namespace WcfService
             return list;
         }
 
-        List<Task> ITodoService.GetAllTasks(long catId)
+        Category ITodoService.GetCategory(long catId)
         {
-            List<Task> list = new List<Task>();
+            Category cat = null;
+
             try
             {
-                list = _repo.GetAllTasks(catId);
+                cat = _repo.GetCategory(catId);
             }
             catch (Exception ex)
             {
                 _log.Error(ex);
                 ServiceDataFault fault = new ServiceDataFault()
                 {
-                    Issue = "GetAllTasks Fail",
+                    Issue = "GetCategory Fail",
                     Details = ex.ToString()
                 };
                 throw new FaultException<ServiceDataFault>(fault, new FaultReason(fault.Issue));
             }
 
-            return list;
+            return cat;
         }
 
         bool ITodoService.AddCategory(Entity.Category category)
@@ -229,6 +230,24 @@ namespace WcfService
             return cat != null;
         }
 
+        bool ITodoService.UpdateCategory(Category category)
+        {
+            try
+            {
+                return _repo.UpdateCategory(category);
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex);
+                ServiceDataFault fault = new ServiceDataFault()
+                {
+                    Issue = "UpdateCategory Fail",
+                    Details = ex.ToString()
+                };
+                throw new FaultException<ServiceDataFault>(fault, new FaultReason(fault.Issue));
+            }
+        }
+
         bool ITodoService.RemoveCategory(long catId)
         {
             bool success = false;
@@ -248,6 +267,27 @@ namespace WcfService
             }
 
             return success;
+        }
+
+        List<Task> ITodoService.GetAllTasks(long catId)
+        {
+            List<Task> list = new List<Task>();
+            try
+            {
+                list = _repo.GetAllTasks(catId);
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex);
+                ServiceDataFault fault = new ServiceDataFault()
+                {
+                    Issue = "GetAllTasks Fail",
+                    Details = ex.ToString()
+                };
+                throw new FaultException<ServiceDataFault>(fault, new FaultReason(fault.Issue));
+            }
+
+            return list;
         }
 
         Task ITodoService.AddTask(long catId, Task task)
@@ -347,6 +387,26 @@ namespace WcfService
             }
 
             return list;
+        }
+
+        CIcon ITodoService.GetIcon(long id)
+        {
+            CIcon icon = null;
+            try
+            {
+                icon = _repo.GetIcon(id);
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex);
+                ServiceDataFault fault = new ServiceDataFault()
+                {
+                    Issue = "GetIcon Fail",
+                    Details = ex.ToString()
+                };
+                throw new FaultException<ServiceDataFault>(fault, new FaultReason(fault.Issue));
+            }
+            return icon;
         }
     }
 }

@@ -34,7 +34,7 @@ namespace MobileMVC.Models
         
         public int Order { get; set; }
 
-        public List<CIcon> AllIcons { get; set; }
+        public IconSelectModel IconModel { get; set; }
 
         public Category GetCategoryObject() 
         {
@@ -48,5 +48,28 @@ namespace MobileMVC.Models
                 Order = this.Order
             };
         }
+    }
+
+    public class CategoryIconModel
+    {
+        public long Id { get; set; }
+
+        public string Title { get; set; }
+
+        public int TaskNum { get; set; }
+
+        public int IconId { get; set; }
+
+        public long UserId { get; set; }
+
+        public int Order { get; set; }
+
+        public CIcon CIcon { get; set; }
+    }
+
+    public class IconSelectModel
+    {
+        public int SelectedId { get; set; }
+        public List<CIcon> Icons { get; set; }
     }
 }

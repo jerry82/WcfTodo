@@ -46,7 +46,7 @@ namespace MobileMVC
             }
             catch (FaultException<ServiceDataFault> fault)
             {
-                Elmah.ErrorSignal.FromCurrentContext().Raise(new Exception(fault.Detail.Details));
+                //Elmah.ErrorSignal.FromCurrentContext().Raise(new Exception(fault.Detail.Details));
             }
             return result;
         }
@@ -71,6 +71,16 @@ namespace MobileMVC
         public List<Category> GetAllCategories(string username)
         {
             return _wsClient.GetAllCategories(username).ToList<Category>();
+        }
+
+        public Category GetCategory(long id)
+        {
+            return _wsClient.GetCategory(id);
+        }
+
+        public bool UpdateCategory(Category cat)
+        {
+            return _wsClient.UpdateCategory(cat);
         }
 
         public void AddCategory(Category cat)
@@ -116,6 +126,11 @@ namespace MobileMVC
         public List<CIcon> GetAllIcons()
         {
             return _wsClient.GetAllIcons().ToList<CIcon>();
+        }
+
+        public CIcon GetIcon(long id)
+        {
+            return _wsClient.GetIcon(id);
         }
         #endregion
     }

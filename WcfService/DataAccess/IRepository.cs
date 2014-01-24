@@ -29,7 +29,7 @@ namespace WcfService.DataAccess
 
         Category GetCategory(long id);
 
-        void UpdateCategory(Category cat);
+        bool UpdateCategory(Category cat);
 
         bool RemoveCategory(long catId);
 
@@ -46,6 +46,8 @@ namespace WcfService.DataAccess
         void RemoveTask(long id);
 
         List<CIcon> GetAllIcons();
+
+        CIcon GetIcon(long id);
 
         void ClearAllIcons();
 

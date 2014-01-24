@@ -33,7 +33,13 @@ namespace WcfService
         List<Task> GetAllTasks(long catId);
 
         [OperationContract]
+        Category GetCategory(long catId);
+
+        [OperationContract]
         bool AddCategory(Category category);
+
+        [OperationContract]
+        bool UpdateCategory(Category category);
 
         [OperationContract]
         bool RemoveCategory(long catId);
@@ -52,6 +58,9 @@ namespace WcfService
 
         [OperationContract]
         List<CIcon> GetAllIcons();
+
+        [OperationContract]
+        CIcon GetIcon(long id);
         
     }
 }

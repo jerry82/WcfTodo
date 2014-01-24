@@ -39,13 +39,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
-    </Reference>
-    <Reference Include="Elmah.Mvc">
-      <HintPath>..\packages\Elmah.MVC.2.1.1\lib\net40\Elmah.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -341,7 +334,7 @@
     <Content Include="Views\Todo\Index.cshtml" />
     <Content Include="Views\Todo\Tasks.cshtml" />
     <Content Include="Views\Todo\_AddTaskPartial.cshtml" />
-    <Content Include="Views\Todo\CategoryAdd.cshtml" />
+    <Content Include="Views\Todo\CategoryAddEdit.cshtml" />
     <Content Include="Views\Todo\_SelectIconPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -374,7 +367,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51427</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51427/</IISUrl>
+          <IISUrl>http://localhost:51427/MobileMVC</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

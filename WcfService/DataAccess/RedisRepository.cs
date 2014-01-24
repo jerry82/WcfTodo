@@ -116,9 +116,10 @@ namespace WcfService.DataAccess
             return RedisApi.CategoryDB.GetById(id);
         }
 
-        public void UpdateCategory(Category cat)
+        public bool UpdateCategory(Category cat)
         {
-            RedisApi.CategoryDB.Store(cat);
+            Category updateCat = RedisApi.CategoryDB.Store(cat);
+            return updateCat != null;
         }
 
         /// <summary>
@@ -130,10 +131,13 @@ namespace WcfService.DataAccess
         {
             //only allow to remove empty categories
             var taskIds = RedisApi.Client.GetAllItemsFromSet(CategoryTaskIndex.Tasks(catId));
-            if (taskIds.Count > 0)
-            {
-                return false;
-            }
+            //if (taskIds.Count > 0)
+            //{
+            //    return false;
+            //}
+
+            RedisApi.Client.Remove(CategoryTaskIndex.Tasks(catId));
+            RedisApi.TaskDB.DeleteByIds(taskIds);
 
             //remove cat>task relationship
             Category cat = GetCategory(catId);

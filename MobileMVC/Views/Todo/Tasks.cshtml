@@ -17,7 +17,7 @@ ViewBag.Title = "Tasks";
     {
         if (!task.Completed)
         {
-            <li data-theme="d data-icon="false">
+            <li data-theme="d" data-icon="false">
                 <a href="#popupMenu" class="taskLink" data-id=@task.Id data-rel="popup" data-inline="true" data-transition="slideup" data-theme="c">@task.Title</a>
             </li>
         }
@@ -28,7 +28,6 @@ ViewBag.Title = "Tasks";
         <li data-role="list-divider" data-divider-theme="d">Completed</li>
     }
         
-
     @foreach (var task in Model.TaskList)
     {
         if (task.Completed)

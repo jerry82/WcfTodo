@@ -13,6 +13,10 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
+    
+    @Html.HiddenFor(m => m.IconId)
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.TaskNum)
 
     <ul data-role="listview" data-inset="false" data-theme="d">
         <li data-role="list-divider">Details</li>
@@ -20,12 +24,14 @@
             @Html.LabelFor(m => m.Title)
             @Html.TextBoxFor(m => m.Title)
         </li>
+
+        <div style="padding-left: 10px">
+            @{ Html.RenderPartial("_SelectIconPartial", Model.IconModel); }
+        </div>
+          
         <li data-role="fieldcontain">
             <input type="submit" value="Add" id="addButton" />
         </li>
     </ul>
 }
 
-<div>
-    @{ Html.RenderPartial("_SelectIconPartial", Model.AllIcons); }
-</div>

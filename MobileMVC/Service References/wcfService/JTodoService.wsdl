@@ -46,11 +46,23 @@
   <wsdl:message name="ITodoService_GetAllTasks_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllTasksResponse" />
   </wsdl:message>
+  <wsdl:message name="ITodoService_GetCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategory" />
+  </wsdl:message>
+  <wsdl:message name="ITodoService_GetCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryResponse" />
+  </wsdl:message>
   <wsdl:message name="ITodoService_AddCategory_InputMessage">
     <wsdl:part name="parameters" element="tns:AddCategory" />
   </wsdl:message>
   <wsdl:message name="ITodoService_AddCategory_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITodoService_UpdateCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCategory" />
+  </wsdl:message>
+  <wsdl:message name="ITodoService_UpdateCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCategoryResponse" />
   </wsdl:message>
   <wsdl:message name="ITodoService_RemoveCategory_InputMessage">
     <wsdl:part name="parameters" element="tns:RemoveCategory" />
@@ -88,6 +100,12 @@
   <wsdl:message name="ITodoService_GetAllIcons_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllIconsResponse" />
   </wsdl:message>
+  <wsdl:message name="ITodoService_GetIcon_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIcon" />
+  </wsdl:message>
+  <wsdl:message name="ITodoService_GetIcon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIconResponse" />
+  </wsdl:message>
   <wsdl:portType name="ITodoService">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/ITodoService/Login" message="tns:ITodoService_Login_InputMessage" />
@@ -114,9 +132,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ITodoService/GetAllTasks" message="tns:ITodoService_GetAllTasks_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITodoService/GetAllTasksResponse" message="tns:ITodoService_GetAllTasks_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITodoService/GetCategory" message="tns:ITodoService_GetCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITodoService/GetCategoryResponse" message="tns:ITodoService_GetCategory_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AddCategory">
       <wsdl:input wsaw:Action="http://tempuri.org/ITodoService/AddCategory" message="tns:ITodoService_AddCategory_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITodoService/AddCategoryResponse" message="tns:ITodoService_AddCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITodoService/UpdateCategory" message="tns:ITodoService_UpdateCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITodoService/UpdateCategoryResponse" message="tns:ITodoService_UpdateCategory_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RemoveCategory">
       <wsdl:input wsaw:Action="http://tempuri.org/ITodoService/RemoveCategory" message="tns:ITodoService_RemoveCategory_InputMessage" />
@@ -141,6 +167,10 @@
     <wsdl:operation name="GetAllIcons">
       <wsdl:input wsaw:Action="http://tempuri.org/ITodoService/GetAllIcons" message="tns:ITodoService_GetAllIcons_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITodoService/GetAllIconsResponse" message="tns:ITodoService_GetAllIcons_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIcon">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITodoService/GetIcon" message="tns:ITodoService_GetIcon_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITodoService/GetIconResponse" message="tns:ITodoService_GetIcon_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ITodoService" type="tns:ITodoService">
@@ -202,8 +232,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetCategory">
+      <soap:operation soapAction="http://tempuri.org/ITodoService/GetCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddCategory">
       <soap:operation soapAction="http://tempuri.org/ITodoService/AddCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCategory">
+      <soap:operation soapAction="http://tempuri.org/ITodoService/UpdateCategory" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -258,6 +306,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllIcons">
       <soap:operation soapAction="http://tempuri.org/ITodoService/GetAllIcons" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIcon">
+      <soap:operation soapAction="http://tempuri.org/ITodoService/GetIcon" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

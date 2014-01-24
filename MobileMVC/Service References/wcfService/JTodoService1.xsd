@@ -88,10 +88,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetCategory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="catId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCategoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WcfService.Entity" minOccurs="0" name="GetCategoryResult" nillable="true" type="q5:Category" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="AddCategory">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WcfService.Entity" minOccurs="0" name="category" nillable="true" type="q5:Category" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WcfService.Entity" minOccurs="0" name="category" nillable="true" type="q6:Category" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -99,6 +113,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="AddCategoryResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCategory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WcfService.Entity" minOccurs="0" name="category" nillable="true" type="q7:Category" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCategoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateCategoryResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -120,21 +148,21 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="catId" type="xs:long" />
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WcfService.Entity" minOccurs="0" name="task" nillable="true" type="q6:Task" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WcfService.Entity" minOccurs="0" name="task" nillable="true" type="q8:Task" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddTaskResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WcfService.Entity" minOccurs="0" name="AddTaskResult" nillable="true" type="q7:Task" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WcfService.Entity" minOccurs="0" name="AddTaskResult" nillable="true" type="q9:Task" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateTask">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WcfService.Entity" minOccurs="0" name="task" nillable="true" type="q8:Task" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WcfService.Entity" minOccurs="0" name="task" nillable="true" type="q10:Task" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -153,7 +181,7 @@
   <xs:element name="GetTaskResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WcfService.Entity" minOccurs="0" name="GetTaskResult" nillable="true" type="q9:Task" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WcfService.Entity" minOccurs="0" name="GetTaskResult" nillable="true" type="q11:Task" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -177,7 +205,21 @@
   <xs:element name="GetAllIconsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WcfService.Entity" minOccurs="0" name="GetAllIconsResult" nillable="true" type="q10:ArrayOfCIcon" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/WcfService.Entity" minOccurs="0" name="GetAllIconsResult" nillable="true" type="q12:ArrayOfCIcon" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetIcon">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetIconResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/WcfService.Entity" minOccurs="0" name="GetIconResult" nillable="true" type="q13:CIcon" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

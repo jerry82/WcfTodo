@@ -1,22 +1,46 @@
-﻿@model IEnumerable<MobileMVC.wcfService.CIcon>
+﻿@model MobileMVC.Models.IconSelectModel
 
-<br />
 <fieldset data-role="collapsible" data-theme="d" data-inset="false" data-content-theme="d">
     <legend>Select Icon:</legend>
     <div data-role="controlgroup">
-    @foreach (var icon in Model)
+    @foreach (var icon in Model.Icons)
     {
-        if (icon.Id == 1)
+        if (icon.Id == Model.SelectedId)
         {
-            <input type="radio" name="radio-choice" id="radio-choice-@icon.Id" value="on" checked="checked">
+            <input type="radio" name="radio-choice" id="radio-choice-@icon.Id" value="@icon.Id" checked="checked">
         }
         else
         {
-            <input type="radio" name="radio-choice" id="radio-choice-@icon.Id" value="off">
+            <input type="radio" name="radio-choice" id="radio-choice-@icon.Id" value="@icon.Id">
         }
         <label for="radio-choice-@icon.Id">@icon.Name
-        <img align="right" height="20px" width="20px" src="/Content/Images/icons/@icon.ImageUri"></label>
+        <img align="right" height="20px" width="20px" src="~/Content/Images/icons/@icon.ImageUri"></label>
     }
     </div>
 </fieldset>
+
+<script>
+    $(document).ready(function () {
+        //if edit page then select the correct icon
+        var catId = $("input:hidden[name='Id']").val()
+        //create 
+        if (catId == 0) {
+            setIconId(1)
+        }
+        //update
+        else {
+            $("#addButton").attr('value', 'Save')
+        }
+
+        //set IconId hidden input 
+        $("input:radio[name='radio-choice']").change(function () {
+            setIconId($("input:radio[name='radio-choice']:checked").val())
+        });
+    });
+
+    function setIconId(value) {
+        $("input[name='IconId'").val(value)
+    }
+</script>
+
 

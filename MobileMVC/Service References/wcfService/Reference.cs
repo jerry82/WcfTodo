@@ -493,8 +493,14 @@ namespace MobileMVC.wcfService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoService/GetAllTasks", ReplyAction="http://tempuri.org/ITodoService/GetAllTasksResponse")]
         MobileMVC.wcfService.Task[] GetAllTasks(long catId);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoService/GetCategory", ReplyAction="http://tempuri.org/ITodoService/GetCategoryResponse")]
+        MobileMVC.wcfService.Category GetCategory(long catId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoService/AddCategory", ReplyAction="http://tempuri.org/ITodoService/AddCategoryResponse")]
         bool AddCategory(MobileMVC.wcfService.Category category);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoService/UpdateCategory", ReplyAction="http://tempuri.org/ITodoService/UpdateCategoryResponse")]
+        bool UpdateCategory(MobileMVC.wcfService.Category category);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoService/RemoveCategory", ReplyAction="http://tempuri.org/ITodoService/RemoveCategoryResponse")]
         bool RemoveCategory(long catId);
@@ -513,6 +519,9 @@ namespace MobileMVC.wcfService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoService/GetAllIcons", ReplyAction="http://tempuri.org/ITodoService/GetAllIconsResponse")]
         MobileMVC.wcfService.CIcon[] GetAllIcons();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoService/GetIcon", ReplyAction="http://tempuri.org/ITodoService/GetIconResponse")]
+        MobileMVC.wcfService.CIcon GetIcon(long id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -566,8 +575,16 @@ namespace MobileMVC.wcfService {
             return base.Channel.GetAllTasks(catId);
         }
         
+        public MobileMVC.wcfService.Category GetCategory(long catId) {
+            return base.Channel.GetCategory(catId);
+        }
+        
         public bool AddCategory(MobileMVC.wcfService.Category category) {
             return base.Channel.AddCategory(category);
+        }
+        
+        public bool UpdateCategory(MobileMVC.wcfService.Category category) {
+            return base.Channel.UpdateCategory(category);
         }
         
         public bool RemoveCategory(long catId) {
@@ -592,6 +609,10 @@ namespace MobileMVC.wcfService {
         
         public MobileMVC.wcfService.CIcon[] GetAllIcons() {
             return base.Channel.GetAllIcons();
+        }
+        
+        public MobileMVC.wcfService.CIcon GetIcon(long id) {
+            return base.Channel.GetIcon(id);
         }
     }
 }
