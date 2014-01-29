@@ -56,6 +56,7 @@ namespace WcfService
                         result.ResultString = ResultCodes.LoginSuccess;
                         result.UserId = user.Id;
                         result.Username = user.Username;
+                        _log.Info(String.Format("Log in Successful for user: {0}", user.Username));
                         break;
                     case (LoginStatus.WrongPass):
                         result.ResultString = ResultCodes.LoginWrongPassword;
@@ -97,6 +98,7 @@ namespace WcfService
                         result.ResultString = ResultCodes.RegisterUserSuccess;
                         result.Username = user.Username;
                         result.UserId = user.Id;
+                        _log.Info(String.Format("New user is registered: {0}", user.Username));
                     }
                     else
                     {
