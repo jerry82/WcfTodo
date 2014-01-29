@@ -2,7 +2,7 @@
 
 <fieldset data-role="collapsible" data-theme="d" data-inset="false" data-content-theme="d">
     <legend>Select Icon:</legend>
-    <div data-role="controlgroup">
+    <div data-role="controlgroup" id="radioGroup">
     @foreach (var icon in Model.Icons)
     {
         if (icon.Id == Model.SelectedId)
@@ -31,15 +31,25 @@
         else {
             $("#addButton").attr('value', 'Save')
         }
-
+        //does not work in iphone 
+        /*
         //set IconId hidden input 
         $("input:radio[name='radio-choice']").change(function () {
             setIconId($("input:radio[name='radio-choice']:checked").val())
+            alert("seticonId: " + $("input:radio[name='radio-choice']:checked").val());
+            alert("catId: " + catId);
+        });
+        */
+        $("#radioGroup").find("input[type='radio']").each(function () {
+            $(this).change(function () {
+                alert(this.value);
+                setIconId(this.value);
+            });
         });
     });
 
     function setIconId(value) {
-        $("input[name='IconId'").val(value)
+        $("input[name='IconId']").val(value)
     }
 </script>
 

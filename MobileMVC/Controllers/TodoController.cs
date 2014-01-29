@@ -72,6 +72,8 @@ namespace MobileMVC.Controllers
                 catModel.UserId = userId;
 
                 Category cat = catModel.GetCategoryObject();
+                if (cat.IconId == 0)
+                    cat.IconId = 1;
                 WcfApi.Instance.AddCategory(cat);
                 return RedirectToAction("Index");
             }
@@ -120,6 +122,8 @@ namespace MobileMVC.Controllers
                 catModel.UserId = userId;
 
                 Category cat = catModel.GetCategoryObject();
+                if (cat.IconId == 0)
+                    cat.IconId = 1;
                 WcfApi.Instance.UpdateCategory(cat);
                 return RedirectToAction("Index");
             }
